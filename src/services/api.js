@@ -137,3 +137,8 @@ export const uploadProfileImage = (file) => {
         headers: { "Content-Type": "multipart/form-data" }
     });
 };
+
+// Academic Session APIs
+export const getCurrentSession = () => axios.get("/academic-session");
+export const promoteStudents = () => axios.put("/academic-session/promote-students");
+

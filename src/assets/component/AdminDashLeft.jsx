@@ -162,6 +162,19 @@ function AdminDashLeft() {
                         />
                     </div>
                 </NavLink>
+                <NavLink to="/app/admin/academicsection" className={({ isActive }) =>
+                `rounded w-[260px] h-11 flex relative items-center px-3 ${
+                    isActive ? "bg-[#dbdede] text-[#4154f1] font-bold" : "bg-[#ffffff] text-[#012970]"}`}>
+                    <div className="text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
+                        Academic Section
+                    </div>
+                    <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
+                        <img
+                        className="w-[66.67%] h-[83.33%] absolute right-[16.67%] left-[16.67%] bottom-[8.33%] top-[8.33%] overflow-visible"
+                        src={subject}
+                        />
+                    </div>
+                </NavLink>
                 <div className="text-[#899bbd] text-left font-['OpenSans-SemiBold',_sans-serif] text-[11px] leading-[16.5px] font-semibold uppercase relative flex items-center justify-start">
                 Logout
                 </div>

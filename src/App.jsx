@@ -33,6 +33,7 @@ import ForgetPassword from "./ForgetPassword";
 import PrivateRoute from "./assets/component/PrivateRoutes";
 import NotFound from "./assets/component/NotFound";
 import { StudentsProvider } from "./assets/contextAPI/StudentContext";
+import AcademicSection from "./app/admin/AcademicSection";
 
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
                         <Route path="/app/teacher/absentapplication" element={<AbsentApplication />} />
                         <Route path="/app/teacher/markattendance" element={<MarkAttendance />} />
                         <Route path="/app/teacher/Subject" element={<TeacherSubjects />} />
+                        <Route path="/app/admin/academicsection" element={<AcademicSection />} />
                       </Route>
 
                       {/* Catch-all route */}
