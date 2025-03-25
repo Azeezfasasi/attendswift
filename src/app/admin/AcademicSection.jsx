@@ -7,7 +7,7 @@ import AdminDashLeft from "../../assets/component/AdminDashLeft";
 const AcademicSection = () => {
   const [sessions, setSessions] = useState([]);
   const [newSession, setNewSession] = useState({
-    AcademicSession: "",
+    academicSession: "",
     startDate: "",
     endDate: "",
     terms: "",
@@ -50,7 +50,7 @@ const AcademicSection = () => {
       await axios.post(BASE_URL, newSession);
       alert("Session added successfully");
       fetchSessions();
-      setNewSession({ AcademicSession: "", startDate: "", endDate: "", terms: "", isCurrent: false });
+      setNewSession({ academicSession: "", startDate: "", endDate: "", terms: "", isCurrent: false });
     } catch (error) {
       console.error("Error adding session", error);
       alert("Failed to add session: " + error.response?.data?.error);
@@ -102,7 +102,7 @@ const AcademicSection = () => {
                 type="text"
                 name="AcademicSession"
                 placeholder="e.g., 2024/2025"
-                value={newSession.AcademicSession}
+                value={newSession.academicSession}
                 onChange={handleChange}
                 required
               />
@@ -148,7 +148,7 @@ const AcademicSection = () => {
               sessions.map((session) => (
                 <div key={session._id}>
                   <p>
-                    {session.AcademicSession} ({session.terms}) - {" "}
+                    {session.academicSession} ({session.terms}) - {" "}
                     {session.isCurrent ? "✅ Current" : "❌ Not Current"}
                   </p>
                   <button onClick={() => handleDeleteSession(session._id)}>Delete</button>
