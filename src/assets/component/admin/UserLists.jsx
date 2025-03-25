@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LoadingSpinner from "../LoadingSpinner";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -32,6 +33,10 @@ const AllUsers = () => {
       
     fetchUsers();
   }, []);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">

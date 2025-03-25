@@ -6,6 +6,7 @@ import TeacherDashStats from '../assets/component/teacher/TeacherDashStats';
 import DashReport from '../assets/component/teacher/DashReport';
 import DashAttendanceReport from '../assets/component/teacher/DashAttendanceReport';
 import RecentActivies from '../assets/component/admin/RecentActivies';
+import DashboardCurrentSession from '../assets/component/admin/DashboardCurrentSession';
 
 function AdminDashboard() {
   return (
@@ -20,6 +21,7 @@ function AdminDashboard() {
           <AdminDashLeft />
         </div>
         <div className='w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
+          <DashboardCurrentSession />
           <TeacherDashStats />
           <DashReport />
           <RecentActivies />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import LoadingSpinner from '../LoadingSpinner';
 
 const TeacherAttendanceSheetMain = () => {
     const [grade, setGrade] = useState('');
@@ -39,6 +40,10 @@ const TeacherAttendanceSheetMain = () => {
             setLoading(false);
         }
     };
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     return (
         <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">

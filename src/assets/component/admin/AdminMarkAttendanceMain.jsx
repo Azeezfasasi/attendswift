@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useStudents } from "../../contextAPI/StudentContext";
+import LoadingSpinner from "../LoadingSpinner";
 
 const AdminMarkAttendanceMain = () => {
   const { grade, setGrade, section, setSection, students, uniqueId } = useStudents();
@@ -83,6 +84,10 @@ const AdminMarkAttendanceMain = () => {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">

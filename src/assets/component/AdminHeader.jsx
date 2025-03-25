@@ -4,6 +4,7 @@ import azeez from '../images/azeez.jpeg';
 import profile from '../images/profile.png';
 import { useProfile } from "../contextAPI/ProfileContext";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from './LoadingSpinner';
 
 function AdminHeader() {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ function AdminHeader() {
       }, [user, fetchUserDetails]);
     
       if (loading) {
-        return <p>Loading user details...</p>;
+        return <LoadingSpinner />;
       }
     
       if (!user) {
