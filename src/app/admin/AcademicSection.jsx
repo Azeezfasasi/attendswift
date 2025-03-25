@@ -15,74 +15,14 @@ const AcademicSection = () => {
   });
   const [loading, setLoading] = useState(true);
 
-  // // Fetch all sessions
-  // const fetchSessions = async () => {
-  //   try {
-  //     const response = await axios.get("https://attendswift.netlify.app/api/academicsessions");
-  //     console.log(response.data);
-  //     if (Array.isArray(response.data)) {
-  //       setSessions(response.data);
-  //     } else {
-  //       setSessions([]);
-  //       console.error("Invalid response format", response.data);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching sessions", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchSessions();
-  // }, []);
-
-  // // Handle form input changes
-  // const handleChange = (e) => {
-  //   const { name, value, type, checked } = e.target;
-  //   setNewSession({
-  //     ...newSession,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   });
-  // };
-
-  // // Add new session
-  // const handleAddSession = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post("https://attendswift.netlify.app/api/academicsessions", newSession);
-  //     alert("Session added successfully");
-  //     fetchSessions();
-  //     setNewSession({ AcademicSession: "", startDate: "", endDate: "", terms: "", isCurrent: false });
-  //   } catch (error) {
-  //     console.error("Error adding session", error);
-  //     alert("Failed to add session");
-  //   }
-  // };
-
-  // // Delete a session
-  // const handleDeleteSession = async (id) => {
-  //   try {
-  //     await axios.delete(`https://attendswift.netlify.app/api/academicsessions/${id}`);
-  //     alert("Session deleted successfully");
-  //     fetchSessions();
-  //   } catch (error) {
-  //     console.error("Error deleting session", error);
-  //     alert("Failed to delete session");
-  //   }
-  // };
-
-  // // Set a session as current
-  // const handleSetCurrent = async (id) => {
-  //   try {
-  //     await axios.patch(`https://attendswift.netlify.app/api/academicsessions/${id}/setCurrent`);
-  //     alert("Session set as current");
-  //     fetchSessions();
-  //   } catch (error) {
-  //     console.error("Error updating current session", error);
-  //     alert("Failed to update current session");
-  //   }
-  // };
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setNewSession({
+      ...newSession,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
 
   const BASE_URL = "https://attendswift-backend.onrender.com/api/academicsessions";
 
@@ -139,12 +79,12 @@ const AcademicSection = () => {
     }
   };
 
-  if (loading) return <p>Loading sessions...</p>;
+  // if (loading) return <p>Loading sessions...</p>;
 
   return (
     <>
     <Helmet>
-        <title>Absense | AttendSwift</title>
+        <title>Academic Session | AttendSwift</title>
     </Helmet>
     <div className='w-full'>
       <AdminHeader />
@@ -197,7 +137,7 @@ const AcademicSection = () => {
                 />
               </label>
 
-              <button type="submit">Add Session</button>
+              <button type="submit" className="py-2 px-4 bg-blue-700 text-white">Add Session</button>
             </form>
 
             {/* Display existing sessions */}
