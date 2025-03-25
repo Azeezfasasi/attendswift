@@ -100,7 +100,7 @@ const AcademicSection = () => {
             <form onSubmit={handleAddSession} className="flex flex-col">
               <input
                 type="text"
-                name="AcademicSession"
+                name="academicSession"
                 placeholder="e.g., 2024/2025"
                 value={newSession.academicSession}
                 onChange={handleChange}
