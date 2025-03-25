@@ -1,109 +1,177 @@
-// import { useEffect, useState } from "react";
-// import { getCurrentSession, promoteStudents } from "../../services/api";
-// import { Helmet } from "react-helmet";
-// import AdminHeader from "../../assets/component/AdminHeader";
-// import AdminDashLeft from "../../assets/component/AdminDashLeft";
-// import axios from "axios";
-
-// function AcademicSection() {
-//   const [session, setSession] = useState(null);
-
-//   useEffect(() => {
-//     const fetchSession = async () => {
-//         try {
-//           const response = await axios.get("https://attendswift.netlify.app/api/academic-session/session/current");
-//           console.log("API Response:", response.data);
-      
-//           // Directly use the object as the session
-//           const currentSession = response.data;
-      
-//           if (!currentSession || !currentSession.isCurrent) {
-//             console.error("No active session found");
-//           }
-      
-//           setSession(currentSession);
-//         } catch (error) {
-//           console.error("Error fetching session:", error);
-//         }
-//       };      
-
-//     fetchSession();
-//   }, []);
-  
-
-//   const handlePromotion = async () => {
-//     try {
-//       await promoteStudents();
-//       alert("Promotion completed!");
-//     } catch (error) {
-//       console.error("Error promoting students:", error);
-//       alert("Promotion failed. Check logs for details.");
-//     }
-//   };
-
-//  const currentTerm = session?.terms?.find(term => term.isCurrent)?.name || "No active term";
-
-//   return (
-//     <>
-//       <Helmet>
-//         <title>Academic Section | AttendSwift</title>
-//       </Helmet>
-//       <div className="w-full">
-//         <AdminHeader />
-//         <div className="w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]">
-//           <div className="w-[18%]">
-//             <AdminDashLeft />
-//           </div>
-//           <div className="w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto">
-//             <div>
-//                 <p className="font-bold">Academic Session: <span className="font-normal">{session?.name || "No active session"}</span></p>
-//                 <p className="font-bold">Start Date: <span className="font-normal">{session?.startDate || "Not provided"}</span></p>
-//                 <p className="font-bold">End Date: <span className="font-normal">{session?.endDate || "Not provided"}</span></p>
-//                 <p className="font-bold">Current Term: <span className="font-normal">{currentTerm ? currentTerm?.name : "No active term"}</span></p>
-//               <button onClick={handlePromotion} className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer mt-[20px]">Promote Students</button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default AcademicSection;
-
-import { useEffect, useState } from "react";
-import { getCurrentSession, promoteStudents } from "../../services/api";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Helmet } from "react-helmet";
 import AdminHeader from "../../assets/component/AdminHeader";
 import AdminDashLeft from "../../assets/component/AdminDashLeft";
-import axios from "axios";
 
-function AcademicSection() {
+const AcademicSection = () => {
+  const [sessions, setSessions] = useState([]);
+  const [newSession, setNewSession] = useState({
+    AcademicSession: "",
+    startDate: "",
+    endDate: "",
+    terms: "",
+    isCurrent: false,
+  });
+  const [loading, setLoading] = useState(true);
+
+  // Fetch all sessions
+  const fetchSessions = async () => {
+    try {
+      const response = await axios.get("https://attendswift.netlify.app/api/sessions");
+      setSessions(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching sessions", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSessions();
+  }, []);
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setNewSession({
+      ...newSession,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Add new session
+  const handleAddSession = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("https://attendswift.netlify.app/api/sessions", newSession);
+      alert("Session added successfully");
+      fetchSessions();
+      setNewSession({ AcademicSession: "", startDate: "", endDate: "", terms: "", isCurrent: false });
+    } catch (error) {
+      console.error("Error adding session", error);
+      alert("Failed to add session");
+    }
+  };
+
+  // Delete a session
+  const handleDeleteSession = async (id) => {
+    try {
+      await axios.delete(`https://attendswift.netlify.app/api/sessions/${id}`);
+      alert("Session deleted successfully");
+      fetchSessions();
+    } catch (error) {
+      console.error("Error deleting session", error);
+      alert("Failed to delete session");
+    }
+  };
+
+  // Set a session as current
+  const handleSetCurrent = async (id) => {
+    try {
+      await axios.patch(`https://attendswift.netlify.app/api/sessions/${id}/setCurrent`);
+      alert("Session set as current");
+      fetchSessions();
+    } catch (error) {
+      console.error("Error updating current session", error);
+      alert("Failed to update current session");
+    }
+  };
+
+  if (loading) return <p>Loading sessions...</p>;
 
   return (
     <>
-      <Helmet>
-        <title>Academic Section | AttendSwift</title>
-      </Helmet>
-      <div className="w-full">
-        <AdminHeader />
-        <div className="w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]">
-          <div className="w-[18%]">
-            <AdminDashLeft />
-          </div>
-          <div className="w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto">
-            <div>
-                <p className="font-bold">Academic Session: <span className="font-normal">2024/2025</span></p>
-                <p className="font-bold">Start Date: <span className="font-normal">September 2024</span></p>
-                <p className="font-bold">End Date: <span className="font-normal">July 2025</span></p>
-                <p className="font-bold">Current Term: <span className="font-normal">Term 2</span></p>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer mt-[20px]">Promote Students</button>
-            </div>
+    <Helmet>
+        <title>Absense | AttendSwift</title>
+    </Helmet>
+    <div className='w-full'>
+      <AdminHeader />
+      <div className='w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]'>
+        <div className='w-[18%]'>
+          <AdminDashLeft />
+        </div>
+        <div className='w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
+          <div className="flex flex-col border">
+            <h2>Academic Session Manager</h2>
+
+            {/* Form to add a new session */}
+            <form onSubmit={handleAddSession} className="flex flex-col">
+              <input
+                type="text"
+                name="AcademicSession"
+                placeholder="e.g., 2024/2025"
+                value={newSession.AcademicSession}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="date"
+                name="startDate"
+                value={newSession.startDate}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="date"
+                name="endDate"
+                value={newSession.endDate}
+                onChange={handleChange}
+                required
+              />
+              {/* <input
+                type="text"
+                name="terms"
+                placeholder="e.g., First Term"
+                value={newSession.terms}
+                onChange={handleChange}
+                required
+              /> */}
+              <select name="terms" value={newSession.terms} onChange={handleChange} required>
+                <option value="">Choose term</option>
+                <option value="Term 1">Term 1</option>
+                <option value="Term 2">Term 2</option>
+                <option value="Term 3">Term 3</option>
+              </select>
+              <label>
+                Current Session?
+                <input
+                  type="checkbox"
+                  name="isCurrent"
+                  checked={newSession.isCurrent}
+                  onChange={handleChange}
+                />
+              </label>
+
+              <button type="submit">Add Session</button>
+            </form>
+
+            {/* Display existing sessions */}
+            <h3>Existing Sessions:</h3>
+            {sessions.length === 0 ? (
+              <p>No sessions available</p>
+            ) : (
+              sessions.map((session) => (
+                <div key={session._id}>
+                  <p>
+                    {session.AcademicSession} ({session.terms}) - {" "}
+                    {session.isCurrent ? "✅ Current" : "❌ Not Current"}
+                  </p>
+                  <button onClick={() => handleDeleteSession(session._id)}>Delete</button>
+                  {!session.isCurrent && (
+                    <button onClick={() => handleSetCurrent(session._id)}>
+                      Set as Current
+                    </button>
+                  )}
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </>
   );
-}
+};
 
 export default AcademicSection;
