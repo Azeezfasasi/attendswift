@@ -43,36 +43,60 @@ const AcademicSection = () => {
     }
   };
   
+  // const handleAddSession = async (e) => {
+  //   e.preventDefault();
+  
+  //   const payload = {
+  //     academicSession: newSession.academicSession?.trim(),
+  //     startDate: newSession.startDate,
+  //     endDate: newSession.endDate,
+  //     terms: Array.isArray(newSession.terms) ? newSession.terms : newSession.terms.split(",").map(term => term.trim()),
+  //     isCurrent: newSession.isCurrent || false,
+  //   };
+  
+  //   console.log("Payload being sent:", payload); // Check for null/undefined
+  
+  //   try {
+  //     const response = await axios.post('https://attendswift-backend.onrender.com/api/academicsessions', payload);
+  //     alert("Session added successfully");
+  //     fetchSessions();
+  //   } catch (error) {
+  //     console.error("Error adding session", error);
+  //     alert(`Failed to add session: ${error.response?.data?.message || error.message}`);
+  //   }
+  // };
   const handleAddSession = async (e) => {
     e.preventDefault();
+  
+    if (!newSession.academicSession || !newSession.startDate || !newSession.endDate || !newSession.terms) {
+      alert("Please fill all fields.");
+      return;
+    }
+  
+    if (new Date(newSession.startDate) >= new Date(newSession.endDate)) {
+      alert("Start date must be before end date.");
+      return;
+    }
+  
+    const payload = {
+      academicSession: newSession.academicSession.trim(),
+      startDate: newSession.startDate,
+      endDate: newSession.endDate,
+      terms: Array.isArray(newSession.terms) 
+        ? newSession.terms.map((term) => term.trim()) 
+        : newSession.terms.split(",").map((term) => term.trim()),
+      isCurrent: newSession.isCurrent || false,
+    };
+  
     try {
-      const payload = {
-        academicSession: newSession.academicSession,
-        startDate: newSession.startDate,
-        endDate: newSession.endDate,
-        terms: newSession.terms.split(",").map((term) => term.trim()), // Ensure it's an array
-        isCurrent: newSession.isCurrent,
-      };
-  
-      console.log("Payload being sent: ", payload);
-  
-      const response = await axios.post(BASE_URL, payload);
+      const response = await axios.post("https://attendswift-backend.onrender.com/api/academicsessions", payload);
       alert("Session added successfully");
       fetchSessions();
-  
-      setNewSession({
-        academicSession: "",
-        startDate: "",
-        endDate: "",
-        terms: "",
-        isCurrent: false,
-      });
     } catch (error) {
       console.error("Error adding session", error);
-      alert("Failed to add session: " + (error.response?.data?.error || error.message));
+      alert(`Failed to add session: ${error.response?.data?.error || error.message}`);
     }
   };
-  
   
   // Delete a session
   const handleDeleteSession = async (id) => {
