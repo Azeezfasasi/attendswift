@@ -139,6 +139,6 @@ export const uploadProfileImage = (file) => {
 };
 
 // Academic Session APIs
-export const getCurrentSession = () => axios.get("/academic-session");
+export const getCurrentSession = () => axios.get("/academic-session/current");
 export const promoteStudents = () => axios.put("/academic-session/promote-students");
 

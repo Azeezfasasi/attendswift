@@ -11,7 +11,7 @@ function AcademicSection() {
   useEffect(() => {
     const fetchSession = async () => {
         try {
-          const response = await axios.get("http://localhost:5000/api/academic-session/current");
+          const response = await axios.get("https://attendswift.netlify.app/api/academic-session/current");
           console.log("API Response:", response.data);
       
           // Directly use the object as the session
@@ -41,12 +41,7 @@ function AcademicSection() {
     }
   };
 
-//   const currentTerm = session?.terms?.isCurrent
-//     ? session.terms.name || "Unnamed Term"
-//     : "No active term";
-
  const currentTerm = session?.terms?.find(term => term.isCurrent)?.name || "No active term";
-
 
   return (
     <>
@@ -61,11 +56,11 @@ function AcademicSection() {
           </div>
           <div className="w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto">
             <div>
-                <p>Academic Session: {session?.name || "No active session"}</p>
-                <p>Start Date: {session?.startDate || "Not provided"}</p>
-                <p>End Date: {session?.endDate || "Not provided"}</p>
-                <p>Current Term: {currentTerm ? currentTerm?.name : "No active term"}</p>
-              <button onClick={handlePromotion}>Promote Students</button>
+                <p className="font-bold">Academic Session: <span className="font-normal">{session?.name || "No active session"}</span></p>
+                <p className="font-bold">Start Date: <span className="font-normal">{session?.startDate || "Not provided"}</span></p>
+                <p className="font-bold">End Date: <span className="font-normal">{session?.endDate || "Not provided"}</span></p>
+                <p className="font-bold">Current Term: <span className="font-normal">{currentTerm ? currentTerm?.name : "No active term"}</span></p>
+              <button onClick={handlePromotion} className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer mt-[20px]">Promote Students</button>
             </div>
           </div>
         </div>
