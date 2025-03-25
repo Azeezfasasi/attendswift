@@ -84,11 +84,11 @@ const AcademicSection = () => {
   //   }
   // };
 
-  const BASE_URL = "http://localhost:5000/api/academicsessions";
+  const BASE_URL = "https://attendswift-backend.onrender.com/api/academicsessions";
 
   const fetchSessions = async () => {
     try {
-      const response = await axios.get(BASE_URL);
+      const response = await axios.get("https://attendswift-backend.onrender.com/api/academicsessions");
       if (Array.isArray(response.data)) {
         setSessions(response.data);
       } else {
