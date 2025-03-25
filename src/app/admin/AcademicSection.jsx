@@ -43,19 +43,36 @@ const AcademicSection = () => {
     }
   };
   
-  // Add new session
   const handleAddSession = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(BASE_URL, newSession);
+      const payload = {
+        academicSession: newSession.academicSession,
+        startDate: newSession.startDate,
+        endDate: newSession.endDate,
+        terms: newSession.terms.split(",").map((term) => term.trim()), // Ensure it's an array
+        isCurrent: newSession.isCurrent,
+      };
+  
+      console.log("Payload being sent: ", payload);
+  
+      const response = await axios.post(BASE_URL, payload);
       alert("Session added successfully");
       fetchSessions();
-      setNewSession({ academicSession: "", startDate: "", endDate: "", terms: "", isCurrent: false });
+  
+      setNewSession({
+        academicSession: "",
+        startDate: "",
+        endDate: "",
+        terms: "",
+        isCurrent: false,
+      });
     } catch (error) {
       console.error("Error adding session", error);
-      alert("Failed to add session: " + error.response?.data?.error);
+      alert("Failed to add session: " + (error.response?.data?.error || error.message));
     }
   };
+  
   
   // Delete a session
   const handleDeleteSession = async (id) => {
