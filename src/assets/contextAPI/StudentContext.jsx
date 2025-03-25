@@ -38,7 +38,6 @@ export const StudentsProvider = ({ children }) => {
   // const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    console.log("Loading students...");
     loadStudents();
   }, []);
 

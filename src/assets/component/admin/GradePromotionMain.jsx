@@ -4,7 +4,6 @@ import { useStudents } from "../../contextAPI/StudentContext";
 
 const GradePromotionMain = () => {
   const { grade, setGrade, section, setSection, students } = useStudents();
-
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [promotionStatus, setPromotionStatus] = useState({});
   const [loading, setLoading] = useState(false);
@@ -15,6 +14,7 @@ const GradePromotionMain = () => {
     setSection("");
   }, [setGrade, setSection]);
 
+  // Filter students based on grade and section
   const handleGetStudents = () => {
     if (!students || students.length === 0) {
       setFilteredStudents([]);
@@ -27,18 +27,20 @@ const GradePromotionMain = () => {
 
     setFilteredStudents(filtered);
 
-    // Initialize promotion status for each student
+    // Initialize promotion status
     const initialPromotionStatus = {};
     filtered.forEach((student) => {
-      initialPromotionStatus[student._id] = "Not Promoted";
+      initialPromotionStatus[student._id] = student.promotionStatus || "pending";
     });
     setPromotionStatus(initialPromotionStatus);
   };
 
+  // Update promotion status locally
   const handlePromotionChange = (id, status) => {
     setPromotionStatus((prevStatus) => ({ ...prevStatus, [id]: status }));
   };
 
+  // Submit promotion updates to the backend
   const handlePromoteStudents = async () => {
     setLoading(true);
     try {
@@ -51,15 +53,38 @@ const GradePromotionMain = () => {
         promotions: promotionData,
       });
 
-      setMessage("Students promoted successfully!");
-      handleGetStudents();
+      setMessage("Students' promotion status updated successfully!");
+      handleGetStudents(); // Refresh the student list
     } catch (err) {
       console.error("Promotion error:", err);
-      setMessage("Error promoting students. Try again.");
+      setMessage("Error updating promotion status. Try again.");
     } finally {
       setLoading(false);
     }
   };
+
+const handleSetAllPending = async () => {
+    setLoading(true);
+    try {
+      const pendingData = filteredStudents.map((student) => ({
+        studentId: student._id,
+        status: "Pending",
+      }));
+  
+      await axios.put("https://attendswift-backend.onrender.com/api/students/update/promote", {
+        promotions: pendingData,
+      });
+  
+      setMessage("All students set to Pending successfully!");
+      handleGetStudents(); // Refresh the list
+    } catch (error) {
+      console.error("Error setting all to Pending:", error);
+      setMessage("Error updating to Pending.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">
@@ -131,14 +156,19 @@ const GradePromotionMain = () => {
                       onChange={(e) => handlePromotionChange(item._id, e.target.value)}
                       className="border border-gray-300 rounded-md px-2 py-1"
                     >
-                      <option value="Not Promoted">Not Promoted</option>
+                      <option value="Pending">Pending</option>
                       <option value="Promoted">Promoted</option>
+                      <option value="Not eligible">Not Eligible</option>
                     </select>
                   </td>
                 </tr>
               ))
             ) : (
-              <tr><td colSpan="5" className="p-3 text-center text-gray-500">No Students found</td></tr>
+              <tr>
+                <td colSpan="5" className="p-3 text-center text-gray-500">
+                  No Students found
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
@@ -146,13 +176,23 @@ const GradePromotionMain = () => {
         {message && <p className="mt-3 text-center font-semibold text-sm text-blue-600">{message}</p>}
 
         {filteredStudents.length > 0 && (
-          <button
-            onClick={handlePromoteStudents}
-            className="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 ml-2 mb-2"
-          >
-            {loading ? "Promoting..." : "Promote Students"}
-          </button>
+        <>
+          <div className="w-full flex flex-col md:flex-row items-center justify-start gap-4 mt-6 mb-6 md:mb-3">
+            <button
+                onClick={handlePromoteStudents}
+                className="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 ml-2 "
+            >
+                {loading ? "Updating..." : "Update Promotion Status"}
+            </button>
+          </div>
+        </>
         )}
+        
+        <div className=" flex flex-col md:flex-row items-center justify-start gap-4 mt-4 mb-6 md:mb-3 ml-2">
+            <button onClick={handleSetAllPending} className="bg-yellow-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-yellow-700">
+                {loading ? "Setting to Pending..." : "Set All to Pending"}
+            </button>
+        </div>
       </div>
     </div>
   );
