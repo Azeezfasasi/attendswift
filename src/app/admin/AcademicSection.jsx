@@ -45,56 +45,68 @@ const AcademicSection = () => {
   
   // const handleAddSession = async (e) => {
   //   e.preventDefault();
+
+  //   const trimmedSession = newSession.academicSession?.trim(); // Trim and handle null
+
+  //   if (!trimmedSession) {
+  //     alert("Academic Session cannot be empty.");
+  //     return; // Stop the function if the field is empty
+  //   }
+  
+  //   if (!newSession.academicSession || !newSession.startDate || !newSession.endDate || !newSession.terms) {
+  //     alert("Please fill all fields.");
+  //     return;
+  //   }
+  
+  //   if (new Date(newSession.startDate) >= new Date(newSession.endDate)) {
+  //     alert("Start date must be before end date.");
+  //     return;
+  //   }
   
   //   const payload = {
-  //     academicSession: newSession.academicSession?.trim(),
+  //     academicSession: newSession.academicSession.trim(),
   //     startDate: newSession.startDate,
   //     endDate: newSession.endDate,
-  //     terms: Array.isArray(newSession.terms) ? newSession.terms : newSession.terms.split(",").map(term => term.trim()),
+  //     terms: Array.isArray(newSession.terms) 
+  //       ? newSession.terms.map((term) => term.trim()) 
+  //       : newSession.terms.split(",").map((term) => term.trim()),
   //     isCurrent: newSession.isCurrent || false,
   //   };
   
-  //   console.log("Payload being sent:", payload); // Check for null/undefined
-  
   //   try {
-  //     const response = await axios.post('https://attendswift-backend.onrender.com/api/academicsessions', payload);
+  //     const response = await axios.post("https://attendswift-backend.onrender.com/api/academicsessions", payload);
   //     alert("Session added successfully");
   //     fetchSessions();
   //   } catch (error) {
   //     console.error("Error adding session", error);
-  //     alert(`Failed to add session: ${error.response?.data?.message || error.message}`);
+  //     alert(`Failed to add session: ${error.response?.data?.error || error.message}`);
   //   }
   // };
   const handleAddSession = async (e) => {
     e.preventDefault();
   
-    if (!newSession.academicSession || !newSession.startDate || !newSession.endDate || !newSession.terms) {
-      alert("Please fill all fields.");
-      return;
-    }
+    const trimmedSession = newSession.academicSession?.trim();
   
-    if (new Date(newSession.startDate) >= new Date(newSession.endDate)) {
-      alert("Start date must be before end date.");
+    if (!trimmedSession) {
+      alert("Academic Session cannot be empty.");
       return;
     }
   
     const payload = {
-      academicSession: newSession.academicSession.trim(),
+      academicSession: trimmedSession,
       startDate: newSession.startDate,
       endDate: newSession.endDate,
-      terms: Array.isArray(newSession.terms) 
-        ? newSession.terms.map((term) => term.trim()) 
-        : newSession.terms.split(",").map((term) => term.trim()),
+      terms: Array.isArray(newSession.terms) ? newSession.terms : newSession.terms.split(",").map(term => term.trim()),
       isCurrent: newSession.isCurrent || false,
     };
   
     try {
-      const response = await axios.post("https://attendswift-backend.onrender.com/api/academicsessions", payload);
+      const response = await axios.post('https://attendswift-backend.onrender.com/api/academicsessions', payload);
       alert("Session added successfully");
       fetchSessions();
     } catch (error) {
       console.error("Error adding session", error);
-      alert(`Failed to add session: ${error.response?.data?.error || error.message}`);
+      alert(`Failed to add session: ${error.response?.data?.error || error.message}`); // More specific error message
     }
   };
   
