@@ -34,6 +34,7 @@ import PrivateRoute from "./assets/component/PrivateRoutes";
 import NotFound from "./assets/component/NotFound";
 import { StudentsProvider } from "./assets/contextAPI/StudentContext";
 import AcademicSection from "./app/admin/AcademicSection";
+import GradePromotion from "./app/admin/GradePromotion";
 
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
                         <Route path="/app/teacher/markattendance" element={<MarkAttendance />} />
                         <Route path="/app/teacher/Subject" element={<TeacherSubjects />} />
                         <Route path="/app/admin/academicsection" element={<AcademicSection />} />
+                        <Route path="/app/admin/gradepromotion" element={<GradePromotion />} />
                       </Route>
 
                       {/* Catch-all route */}
