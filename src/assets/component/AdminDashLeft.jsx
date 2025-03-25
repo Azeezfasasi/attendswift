@@ -37,7 +37,7 @@ function AdminDashLeft() {
     </button>
 
     {/* Sidebar */}
-    <div className={`bg-[#ffffff] w-[300px] h-[70vh] lg:h-[800px] fixed top-[60px] lg:top-[0px] left-0 transform overflow-y-scroll lg:overflow-y-hidden ${menuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 shadow-lg lg:relative lg:flex lg:flex-col`}>
+    <div className={`bg-[#ffffff] w-[300px] h-[100vh] lg:h-[800px] fixed top-[60px] lg:top-[0px] left-0 transform overflow-y-scroll lg:overflow-y-hidden ${menuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 shadow-lg lg:relative lg:flex lg:flex-col`}>
         <div className="flex flex-col gap-0 items-start justify-start absolute left-0 top-0 overflow-x-hidden">
             <Link to="/" className="lg:hidden shrink-0 w-fit h-[26px] relative">
                 <div className="text-[#012970] text-left font-['Nunito-Bold',_sans-serif] text-[20px] md:text-[26px] leading-[26px] font-bold  h-[35px] flex flex-row items-center justify-start ml-[40px] mt-[0px] mb-[-20px]">
