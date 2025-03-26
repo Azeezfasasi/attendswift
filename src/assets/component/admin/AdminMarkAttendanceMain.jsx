@@ -122,7 +122,7 @@ const AdminMarkAttendanceMain = () => {
 
         <button
           onClick={handleGetStudents}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer mt-[20px]"
+          className="box bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition cursor-pointer mt-[20px]"
         >
           Get Students
         </button>

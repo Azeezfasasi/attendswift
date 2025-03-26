@@ -9,7 +9,7 @@ const RecentActivities = () => {
   ];
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md w-[350px] mt-[15px] mx-auto lg:mx-0">
+    <div className="box bg-white p-4 rounded-lg shadow-md w-[350px] mt-[15px] mx-auto lg:mx-0">
       {/* Title */}
       <h2 className="text-lg font-semibold text-blue-700">
         Recent Activities

@@ -2,13 +2,13 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import AdminHeader from '../../assets/component/AdminHeader'
 import AdminDashLeft from '../../assets/component/AdminDashLeft'
-import ThemeToggle from '../../assets/component/ThemeToggle';
+import ProfileEdit from '../../assets/component/admin/ProfileDetails'
 
-function AdminSettings() {
+function AdminProfile() {
   return (
     <>
     <Helmet>
-        <title>Settings | AttendSwift</title>
+        <title>Profile | AttendSwift</title>
     </Helmet>
     <div className='w-full'>
       <AdminHeader />
@@ -17,7 +17,7 @@ function AdminSettings() {
           <AdminDashLeft />
         </div>
         <div className='w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
-            <ThemeToggle />     
+          <ProfileEdit />
         </div>
       </div>
     </div>
@@ -25,4 +25,4 @@ function AdminSettings() {
   )
 }
 
-export default AdminSettings;
+export default AdminProfile;

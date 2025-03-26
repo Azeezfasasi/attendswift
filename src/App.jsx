@@ -28,13 +28,14 @@ import { AbsenceProvider } from "./assets/contextAPI/AbsenseContext";
 import AdminAbsenseApplication from "./app/admin/AbsenseApplication";
 import TeacherSubjects from "./app/teacher/Subject";
 import { ProfileProvider } from "./assets/contextAPI/ProfileContext";
-import AdminSettings from "./app/admin/Settings";
 import ForgetPassword from "./ForgetPassword";
 import PrivateRoute from "./assets/component/PrivateRoutes";
 import NotFound from "./assets/component/NotFound";
 import { StudentsProvider } from "./assets/contextAPI/StudentContext";
 import AcademicSection from "./app/admin/AcademicSection";
 import GradePromotion from "./app/admin/GradePromotion";
+import AdminProfile from "./app/admin/Profile";
+import AdminSettings from "./app/admin/Settings";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
                         <Route path="/app/admin/addsubject" element={<AddSubject />} />
                         <Route path="/app/admin/markattendance" element={<AdminMarkAttendance />} />
                         <Route path="/app/admin/absenseapplication" element={<AdminAbsenseApplication />} />
+                        <Route path="/app/admin/profile" element={<AdminProfile />} />
                         <Route path="/app/admin/settings" element={<AdminSettings />} />
 
                         {/* Teacher Routes */}

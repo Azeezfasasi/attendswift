@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+/* src/index.css */
+
+/* src/index.css */
+
+/* Light Theme (Default) */
+:root {
+    --background: #ffffff;
+    --text: #000000;
+    --border-color: inherit;
+  }
+  
+  /* Dark Theme */
+  html.dark {
+    --background: #000000;
+    --text: #ffffff;
+    --link-color: #ffffff;
+    --border-color: #ffffff;
+  }
+
+  /* Dark Mode */
+    .dark div,
+    .dark p,
+    .dark h2,
+    .dark th,
+    .dark td,
+    .dark span {
+    color: #ffffff;
+    }
+
+  .dark .box {
+    border: 1px solid var(--border-color);
+  }
+  
+  html, body {
+    background-color: var(--background);
+    color: var(--text);
+    height: 100%; /* Ensure full coverage */
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Fix for transparent elements */
+  * {
+    background-color: transparent; /* Ensure transparency */
+    box-shadow: none; /* Avoid shadow effects */
+  }
+  
+  /* Ensure full-page transparency fix */
+  #root {
+    min-height: 100vh; 
+    background-color: var(--background);
+  }
+  
