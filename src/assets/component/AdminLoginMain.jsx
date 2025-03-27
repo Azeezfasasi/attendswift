@@ -44,7 +44,7 @@ function AdminLoginMain() {
             </div>
 
             {/* Right Side */}
-            <form onSubmit={handleSubmit} className="bg-[#ffffff] w-full lg:w-fit rounded border-solid border-[rgba(0,0,0,0.12)] border pt-12 pr-[20px] md:pr-[49px] pb-12 pl-[20px] md:pl-[49px] flex flex-col gap-[26px] items-start justify-start relative">
+            <form onSubmit={handleSubmit} className="box-border bg-[#ffffff] w-full lg:w-fit rounded border-solid border-[rgba(0,0,0,0.12)] border pt-12 pr-[20px] md:pr-[49px] pb-12 pl-[20px] md:pl-[49px] flex flex-col gap-[26px] items-start justify-start relative">
                 <div className="flex flex-row gap-[10px] md:gap-[39px] items-center justify-center shrink-0 relative self-center">
                     <Link to="/" className="bg-[#f0f4fb] rounded-lg border-solid border-[#5f6ef1] border pt-4 pr-2 pb-4 pl-2 flex flex-row gap-3 items-center justify-center shrink-0 w-[160px] md:w-[207px] relative cursor-pointer">
                         <div className="shrink-0 w-6 h-6 static">

@@ -47,13 +47,13 @@ const CurrentSubjects = () => {
   };
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">
+    <div className="container-bg-color container-border-color border bg-gray-100 p-6 rounded-lg shadow-md w-full">
       {/* Filters Section */}
-      <div className="bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
+      <div className="container-bg-color bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Grade</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Grade</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
@@ -68,9 +68,9 @@ const CurrentSubjects = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Section</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Section</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={section}
             onChange={(e) => setSection(e.target.value)}
           >
@@ -98,8 +98,8 @@ const CurrentSubjects = () => {
             Add Subject
           </Link>
       </div>
-      <h2 className="text-lg font-semibold text-[#012970] mb-3">Subject Report</h2>
-      <div className="bg-white rounded-lg shadow-sm overflow-x-auto">
+      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">Subject Report</h2>
+      <div className="container-bg-color container-border border bg-white rounded-lg shadow-sm overflow-x-auto">
         <table className="w-full border-collapse">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
@@ -115,10 +115,10 @@ const CurrentSubjects = () => {
             {filteredData.length > 0 ? (
               filteredData.map((item, index) => (
                 <tr key={item._id} className="border-t">
-                  <td className="p-3">{index + 1}</td>
-                  <td className="p-3">{item.grade}</td>
-                  <td className="p-3">{item.section}</td>
-                  <td className="p-3">
+                  <td className="login-label-text p-3">{index + 1}</td>
+                  <td className="login-label-text p-3">{item.grade}</td>
+                  <td className="login-label-text p-3">{item.section}</td>
+                  <td className="login-label-text p-3">
                     {editingSubject === item._id ? (
                       <input
                         type="text"
@@ -130,7 +130,7 @@ const CurrentSubjects = () => {
                       item.name
                     )}
                   </td>
-                  <td className="p-3">{item.description}</td>
+                  <td className="login-label-text p-3">{item.description}</td>
                   <td className="p-3 flex gap-2">
                     {editingSubject === item._id ? (
                       <button

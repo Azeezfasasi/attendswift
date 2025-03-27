@@ -90,12 +90,12 @@ const AdminMarkAttendanceMain = () => {
   }
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">
-      <div className="bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
+    <div className="container-bg-color container-border border bg-gray-100 p-6 rounded-lg shadow-md w-full">
+      <div className="container-bg-color bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Class</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Class</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
@@ -107,9 +107,9 @@ const AdminMarkAttendanceMain = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Section</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Section</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={section}
             onChange={(e) => setSection(e.target.value)}
           >
@@ -128,9 +128,9 @@ const AdminMarkAttendanceMain = () => {
         </button>
       </div>
 
-      <h2 className="text-lg font-semibold text-[#012970] mb-3">Mark Attendance</h2>
+      <h2 className="login-header-text text-lg font-semibold text-[#012970] mb-3">Mark Attendance</h2>
 
-      <div className="bg-white rounded-lg shadow-sm overflow-x-auto">
+      <div className="container-bg-color container-border border bg-white rounded-lg shadow-sm overflow-x-auto">
         <table className="w-full border-collapse">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
@@ -145,13 +145,13 @@ const AdminMarkAttendanceMain = () => {
             {filteredStudents.length > 0 ? (
               filteredStudents.map((item) => (
                 <tr key={item._id} className="border-t">
-                  <td className="p-3">{item.uniqueId}</td>
-                  <td className="p-3">{item.name}</td>
-                  <td className="p-3">{item.grade}</td>
-                  <td className="p-3">{item.section}</td>
-                  <td className="p-3">
+                  <td className="login-label-text p-3">{item.uniqueId}</td>
+                  <td className="login-label-text p-3">{item.name}</td>
+                  <td className="login-label-text p-3">{item.grade}</td>
+                  <td className="login-label-text p-3">{item.section}</td>
+                  <td className="login-label-text p-3">
                     <select
-                      className="border px-[10px] py-[5px] rounded"
+                      className="input-bg-border border px-[10px] py-[5px] rounded"
                       value={attendance[item._id] || "Select"}
                       onChange={(e) => handleAttendanceChange(item._id, e.target.value)}
                     >
@@ -164,7 +164,7 @@ const AdminMarkAttendanceMain = () => {
                 </tr>
               ))
             ) : (
-              <tr><td colSpan="5" className="p-3 text-center text-gray-500">No records found</td></tr>
+              <tr><td colSpan="5" className="login-label-text p-3 text-center text-gray-500">No records found</td></tr>
             )}
           </tbody>
         </table>

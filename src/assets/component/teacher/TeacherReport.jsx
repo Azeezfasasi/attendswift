@@ -40,14 +40,14 @@ const SubjectReport = () => {
   };
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">
+    <div className="container-bg-color container-border-color border bg-gray-100 p-6 rounded-lg shadow-md w-full">
       {/* Filters Section */}
-      <div className="bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
+      <div className="container-bg-color bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
         {/* Class Selection */}
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Class</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Class</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
@@ -62,9 +62,9 @@ const SubjectReport = () => {
 
         {/* Section Selection */}
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Section</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Section</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={section}
             onChange={(e) => setSection(e.target.value)}
           >
@@ -87,8 +87,8 @@ const SubjectReport = () => {
       </div>
 
       {/* Students Table */}
-      <h2 className="text-lg font-semibold text-[#012970] mb-3">Subject Report</h2>
-      <div className="bg-white rounded-lg shadow-sm overflow-x-auto">
+      <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">Subject Report</h2>
+      <div className="container-bg-color container-border border bg-white rounded-lg shadow-sm overflow-x-auto">
         <table className="w-full border-collapse">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
@@ -104,11 +104,11 @@ const SubjectReport = () => {
               filteredStudents.length > 0 ? (
                 filteredStudents.map((item, index) => (
                   <tr key={index} className="border-t">
-                    <td className="p-3">{item.uniqueId}</td>
-                    <td className="p-3">{item.name}</td>
-                    <td className="p-3">{item.grade}</td>
-                    <td className="p-3">{item.section}</td>
-                    <td className="p-3">
+                    <td className="login-label-text p-3">{item.uniqueId}</td>
+                    <td className="login-label-text p-3">{item.name}</td>
+                    <td className="login-label-text p-3">{item.grade}</td>
+                    <td className="login-label-text p-3">{item.section}</td>
+                    <td className="login-label-text p-3">
                       <button
                         className="border px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                         onClick={() => setSelectedStudent(item)}
@@ -120,14 +120,14 @@ const SubjectReport = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="p-3 text-center text-gray-500">
+                  <td colSpan="5" className="login-label-text p-3 text-center text-gray-500">
                     No records found
                   </td>
                 </tr>
               )
             ) : (
               <tr>
-                <td colSpan="5" className="p-3 text-center text-gray-500">
+                <td colSpan="5" className="login-label-text p-3 text-center text-gray-500">
                   Click "Get Students" to load data
                 </td>
               </tr>
@@ -138,8 +138,8 @@ const SubjectReport = () => {
 
       {/* Student Details Modal */}
       {selectedStudent && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-1/3">
+        <div className="container-bg-color fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50">
+          <div className="container-bg-color container-border-color border bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-1/3">
             <h3 className="text-lg font-semibold text-blue-800 mb-4">Student Details</h3>
             <p><strong>Student ID:</strong> {selectedStudent.uniqueId}</p>
             <p><strong>Student Name:</strong> {selectedStudent.name}</p>

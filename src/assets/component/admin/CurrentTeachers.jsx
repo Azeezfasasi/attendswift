@@ -89,26 +89,26 @@ const CurrentUsers = () => {
   };
 
   return (
-    <div className="bg-white p-5 rounded-lg shadow-md w-full">
-      <h2 className="text-lg font-semibold text-[#012970] mb-3">All Users</h2>
+    <div className="container-bg-color container-border-color border bg-white p-5 rounded-lg shadow-md w-full">
+      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">All Users</h2>
 
       {/* Search Bar */}
       <input
         type="text"
         placeholder="E.g. name, role or email"
-        className="border border-gray-300 rounded-md px-3 py-1 text-sm mb-3"
+        className="input-bg-border border login-label-text border-gray-300 rounded-md px-3 py-1 text-sm mb-3"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
 
       {/* Users Table */}
-      <div className="overflow-x-auto">
+      <div className="container-bg-color overflow-x-auto">
         <div className="flex flex-row justify-end items-center mb-3">
             <Link to="/app/admin/addteacher" className="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition">
               Add Users
             </Link>
           </div>
-        <table className="w-full border-collapse">
+        <table className="container-border border w-full border-collapse rounded">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
               <th className="p-3">Name</th>
@@ -127,14 +127,14 @@ const CurrentUsers = () => {
                         type="text"
                         value={editData.name}
                         onChange={(e) => setEditData({ ...editData, name: e.target.value })}
-                        className="border rounded px-2 py-1 w-full"
+                        className="input-bg-border login-label-text border rounded px-2 py-1 w-full"
                       />
                     </td>
                     <td className="p-3">
                       <select
                         value={editData.role}
                         onChange={(e) => setEditData({ ...editData, role: e.target.value })}
-                        className="border rounded px-2 py-1 w-full"
+                        className="input-bg-border login-label-text border rounded px-2 py-1 w-full"
                       >
                         {/* Ensure this does not create multiple rows */}
                         {["admin", "teacher", "student"].map((role, index) => (
@@ -149,7 +149,7 @@ const CurrentUsers = () => {
                         type="text"
                         value={editData.email}
                         onChange={(e) => setEditData({ ...editData, email: e.target.value })}
-                        className="border rounded px-2 py-1 w-full"
+                        className="input-bg-border login-label-text border rounded px-2 py-1 w-full"
                       />
                     </td>
                     <td className="p-3 flex gap-2">
@@ -163,11 +163,11 @@ const CurrentUsers = () => {
                   </>
                 ) : (
                   <>
-                    <td className="p-3">{user.name}</td>
-                    <td className="p-3">{user.role}</td>
-                    <td className="p-3">{user.email}</td>
-                    <td className="p-3 flex gap-2">
-                      <button className="text-gray-500 hover:text-gray-700" onClick={() => handleEdit(user)}>
+                    <td className="login-label-text p-3">{user.name}</td>
+                    <td className="login-label-text p-3">{user.role}</td>
+                    <td className="login-label-text p-3">{user.email}</td>
+                    <td className="login-label-text p-3 flex gap-2">
+                      <button className="login-label-text text-gray-500 hover:text-gray-700" onClick={() => handleEdit(user)}>
                           <Pencil size={18} />
                         </button>
                         <button className="text-red-500 hover:text-red-700" onClick={() => handleDelete(user._id)}>

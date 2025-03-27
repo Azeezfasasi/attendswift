@@ -10,13 +10,13 @@ function Absense() {
     <Helmet>
         <title>Absense | AttendSwift</title>
     </Helmet>
-    <div className='w-full'>
+    <div className='container-bg-color w-full'>
       <AdminHeader />
-      <div className='w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]'>
-        <div className='w-[18%]'>
+      <div className='container-bg-color w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]'>
+        <div className='container-bg-color w-[18%]'>
           <AdminDashLeft />
         </div>
-        <div className='w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
+        <div className='container-bg-color w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
           <AbsenseRecords />
         </div>
       </div>

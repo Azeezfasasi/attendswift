@@ -60,14 +60,14 @@ function SignUpMain() {
         </div>
 
         {/* Right Side */}
-        <form onSubmit={handleSubmit} className="bg-[#ffffff] w-full lg:w-fit rounded border-solid border-[rgba(0,0,0,0.12)] border pt-12 pr-[20px] md:pr-[49px] pb-12 pl-[20px] md:pl-[49px] flex flex-col gap-[26px] items-start justify-start relative">
+        <form onSubmit={handleSubmit} className="login-form bg-[#ffffff] w-full lg:w-fit rounded border-solid border-[rgba(0,0,0,0.12)] border pt-12 pr-[20px] md:pr-[49px] pb-12 pl-[20px] md:pl-[49px] flex flex-col gap-[26px] items-start justify-start relative">
         <div className="w-full flex flex-row gap-[10px] md:gap-[39px] items-center justify-center shrink-0 relative self-center rounded">
                 <div className="font-bold pt-4 pr-2 pb-4 pl-2 flex flex-row gap-3 items-center justify-center shrink-0 relative cursor-pointer">
                     <div className="text-[20px] md:text-[28px]">Register</div>
               </div>    
             </div>
 
-            {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
+            {error && <p className="link-text-color text-red-500 text-sm mt-2 text-center">{error}</p>}
 
             {/* Name */}
             <div className="w-full md:w-[526px] h-fit flex flex-col items-start justify-start self-center mx-auto relative mb-[-10px] md:mb-[0px]">
@@ -111,7 +111,7 @@ function SignUpMain() {
 
             {/* Submit button */}
             <button type='submit' className="shrink-0 w-[74px] h-[38px] static cursor-pointer mt-[-5px]">
-                <div className="bg-blue-800 text-white text-center font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal w-[74px] h-[38px] flex flex-row justify-center items-center">
+                <div className="button-background bg-blue-800 text-white text-center font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal w-[74px] h-[38px] flex flex-row justify-center items-center">
                     {loading ? "Registering..." : "Register"}
                 </div>
             </button>
@@ -122,7 +122,7 @@ function SignUpMain() {
                 <div className="text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal mr-1">
                     Have an account?
                 </div>
-                <Link to="/" className="text-[#0dcaf0] text-left font-['Roboto-Regular',_sans-serif] text-[15px] leading-6 font-normal">
+                <Link to="/" className="link-text-color text-[#0dcaf0] text-left font-['Roboto-Regular',_sans-serif] text-[15px] leading-6 font-normal">
                     Login here
                 </Link>
             </div>

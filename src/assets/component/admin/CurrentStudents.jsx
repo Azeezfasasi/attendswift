@@ -66,7 +66,7 @@ const CurrentStudents = () => {
   const totalPages = Math.ceil(filteredStudents.length / studentsPerPage);
 
   return (
-    <div className="bg-white p-5 rounded-lg shadow-md w-full">
+    <div className="container-bg-color bg-white p-5 rounded-lg shadow-md w-full">
       <div className="w-full flex flex-row justify-end mb-5">
         <Link to="/app/admin/AddStudent" className="bg-[#0d6efd] rounded-lg px-4 py-2 text-white text-xs">
           Add Students
@@ -74,18 +74,18 @@ const CurrentStudents = () => {
       </div>
       
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-lg font-semibold text-[#012970]">Current Students</h2>
+        <h2 className="logo-link-color text-lg font-semibold text-[#012970]">Current Students</h2>
         <input
           type="text"
           placeholder="Search..."
-          className="border border-gray-300 rounded-md px-3 py-1 text-sm"
+          className="input-bg-border border border-gray-300 rounded-md px-3 py-1 text-sm"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
       
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
+        <table className="input-bg-border border w-full border-collapse rounded">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
               <th className="p-3">Student ID</th>
@@ -101,15 +101,15 @@ const CurrentStudents = () => {
           <tbody className="text-gray-700 text-sm">
             {currentStudents.map((student) => (
               <tr key={student._id} className="border-t">
-                <td className="p-3">{student.uniqueId}</td>
-                <td className="p-3">{student.name}</td>
-                <td className="p-3">{student.grade}</td>
-                <td className="p-3">{student.section}</td>
-                <td className="p-3">{student.age} years</td>
-                <td className="p-3">{student.gender}</td>
-                <td className="p-3">{student.email}</td>
-                <td className="p-3 flex gap-2">
-                  <button className="text-gray-500 hover:text-gray-700" onClick={() => handleEdit(student)}>
+                <td className="login-label-text p-3">{student.uniqueId}</td>
+                <td className="login-label-text p-3">{student.name}</td>
+                <td className="login-label-text p-3">{student.grade}</td>
+                <td className="login-label-text p-3">{student.section}</td>
+                <td className="login-label-text p-3">{student.age} years</td>
+                <td className="login-label-text p-3">{student.gender}</td>
+                <td className="login-label-text p-3">{student.email}</td>
+                <td className="login-label-text p-3 flex gap-2">
+                  <button className="login-label-text text-gray-500 hover:text-gray-700" onClick={() => handleEdit(student)}>
                     <Pencil size={18} />
                   </button>
                   <button

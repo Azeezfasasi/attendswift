@@ -87,13 +87,13 @@ const handleSetAllPending = async () => {
   };
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full">
-      <div className="bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
+    <div className="container-bg-color container-border-color border  bg-gray-100 p-6 rounded-lg shadow-md w-full">
+      <div className="container-bg-color bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
         {/* Class Selection */}
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Class</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Class</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
@@ -106,9 +106,9 @@ const handleSetAllPending = async () => {
 
         {/* Section Selection */}
         <div className="flex flex-col">
-          <label className="text-sm font-medium text-gray-700">Section</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">Section</label>
           <select
-            className="border border-gray-300 rounded-md px-3 py-2 text-sm"
+            className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={section}
             onChange={(e) => setSection(e.target.value)}
           >
@@ -129,9 +129,9 @@ const handleSetAllPending = async () => {
       </div>
 
       {/* Student List with Promotion Status */}
-      <h2 className="text-lg font-semibold text-[#012970] mb-3">Mark Promotion Status</h2>
+      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">Mark Promotion Status</h2>
 
-      <div className="bg-white rounded-lg shadow-sm overflow-x-auto">
+      <div className="container-bg-color container-border border bg-white rounded-lg shadow-sm overflow-x-auto">
         <table className="w-full border-collapse">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
@@ -146,15 +146,15 @@ const handleSetAllPending = async () => {
             {filteredStudents.length > 0 ? (
               filteredStudents.map((item) => (
                 <tr key={item._id} className="border-t">
-                  <td className="p-3">{item.uniqueId}</td>
-                  <td className="p-3">{item.name}</td>
-                  <td className="p-3">{item.grade}</td>
-                  <td className="p-3">{item.section}</td>
-                  <td className="p-3">
+                  <td className="login-label-text p-3">{item.uniqueId}</td>
+                  <td className="login-label-text p-3">{item.name}</td>
+                  <td className="login-label-text p-3">{item.grade}</td>
+                  <td className="login-label-text p-3">{item.section}</td>
+                  <td className="login-label-text p-3">
                     <select
                       value={promotionStatus[item._id]}
                       onChange={(e) => handlePromotionChange(item._id, e.target.value)}
-                      className="border border-gray-300 rounded-md px-2 py-1"
+                      className="input-bg-border border border-gray-300 rounded-md px-2 py-1"
                     >
                       <option value="Pending">Pending</option>
                       <option value="Promoted">Promoted</option>

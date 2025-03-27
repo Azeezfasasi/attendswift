@@ -1,56 +1,220 @@
 @import "tailwindcss";
 
-/* src/index.css */
-
-/* src/index.css */
-
-/* Light Theme (Default) */
+/* Light Mode (Default) */
 :root {
-    --background: #ffffff;
-    --text: #000000;
-    --border-color: inherit;
-  }
-  
-  /* Dark Theme */
-  html.dark {
-    --background: #000000;
-    --text: #ffffff;
-    --link-color: #ffffff;
-    --border-color: #ffffff;
-  }
+  --background: #ffffff;
+  --text: #000000;
+  --border-color: rgba(0, 0, 0, 0.12);
+  --login-header-shadow: 0px 2px 20px 0px rgba(1, 41, 112, 0.1);
+  --login-header-background: #ffffff;
+  --login-header-border: 1px solid white;
+  --login-header-text: #012970;
+  --login-left-side-title-text: #212529;
+  --login-left-side-title-span-text: #012970;
+  --login-left-side-sub-text: #757f8e;
+  --login-form-border-color: rgba(0,0,0,0.12);
+  --login-form-background: #ffffff;
+  --login-form-title: #012970;
+  --login-error-message: #fb2c36;
+  --login-label: #212529;
+  --input-background-color: #ffffff;
+  --input-border-color: #ced4da;
+  --login-forget-password: #6c757d;
+  --login-dont-have-account: #212529;
+  --button-background-color: #193cb8;
+  --button-text-color: #ffffff;
+  --link-color: #0dcaf0;
+  --logo-link-color: #012970;
+  --text-color: #121212;
+  --container-background-color: #ffffff;
+  --logo-border: #ffffff;
+  --account-nav-links-background: #ffffff;
+  --account-nav-links-text-color: #4154f1;
+  --account-nav-links-background-active: #dbdede;
+  --account-nav-links-text-color-active: #4154f1;
+  --account-nav-links-border-color: #ffffff;
+  --account-nav-links-border-color-active: #ffffff;
+  --account-header-dropdown-bg: #ffffff;
+  --account-header-dropdown-border: #e5e7eb;
+  --account-link-text-color: #364153;
+  --container-border: #ffffff;
+  --pagination-button-bg: #d1d5dc;
+}
 
-  /* Dark Mode */
-    .dark div,
-    .dark p,
-    .dark h2,
-    .dark th,
-    .dark td,
-    .dark span {
-    color: #ffffff;
-    }
+/* Dark Mode */
+html.dark {
+  --background: #121212;
+  --text: #ffffff;
+  --border-color: #ffffff;
+  --login-header-shadow: 0px 2px 20px 0px rgb(255, 255, 255);
+  --login-header-background: #121212;
+  --login-header-border: 1px solid white;
+  --login-header-text: #ffffff;
+  --login-left-side-title-text: #ffffff;
+  --login-left-side-title-span-text: #ffffff;
+  --login-left-side-sub-text: #ffffff;
+  --login-form-border-color: rgb(255, 255, 255);
+  --login-form-background: #121212;
+  --login-form-title: #ffffff;
+  --login-error-message: #ec0813;
+  --login-label: #ffffff;
+  --input-background-color: #121212;
+  --input-border-color: #ffffff;
+  --login-forget-password: #ffffff;
+  --login-dont-have-account: #ffffff;
+  --button-background-color: #193cb8;
+  --button-text-color: #ffffff;
+  --link-color: #0dcaf0;
+  --logo-link-color: #ffffff;
+  --text-color: #ffffff;
+  --container-background-color: #121212;
+  --logo-border: #ffffff;
+  --account-nav-links-background: #121212;
+  --account-nav-links-text-color: #ffffff;
+  --account-nav-links-background-active: #121212;
+  --account-nav-links-text-color-active: #ffffff;
+  --account-nav-links-border-color-active: #ffffff;
+  --account-header-dropdown-bg: #121212;
+  --account-header-dropdown-border: #ffffff;
+  --account-link-text-color: #ffffff;
+  --account-link-text-hover-color: #121212;
+  --container-border: #ffffff;
+  --pagination-button-bg: #ffffff;
+  --pagination-button-text-color: #121212;
+}
 
-  .dark .box {
-    border: 1px solid var(--border-color);
-  }
-  
-  html, body {
-    background-color: var(--background);
-    color: var(--text);
-    height: 100%; /* Ensure full coverage */
-    margin: 0; /* Reset margin */
-    padding: 0; /* Reset padding */
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  /* Fix for transparent elements */
-  * {
-    background-color: transparent; /* Ensure transparency */
-    box-shadow: none; /* Avoid shadow effects */
-  }
-  
-  /* Ensure full-page transparency fix */
-  #root {
-    min-height: 100vh; 
-    background-color: var(--background);
-  }
-  
+/* Global Styles */
+html, body {
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom styling for login header */
+.login-header {
+  background-color: var(--login-header-background);
+  box-shadow: var(--login-header-shadow);
+  border-bottom: var(--login-header-border);
+}
+
+.login-header-text {
+  color: var(--login-header-text);
+}
+
+/* custom styling for login page */
+.login-left-title {
+  color: var(--login-left-side-title-text);
+}
+
+.login-left-span-title {
+  color: var(--login-left-side-title-span-text);
+}
+
+.login-left-sub-text {
+  color: var(--login-left-side-sub-text);
+}
+
+.login-form {
+  border-color: var(--login-form-border-color);
+  background-color: var(--login-form-background);
+}
+
+.login-form-title {
+  color: var(--login-form-title);
+}
+
+.login-error-message {
+  color: var(--login-error-message);
+}
+
+.login-label-text {
+  color: var(--login-label);
+}
+
+.input-bg-border {
+  background-color: var(--input-background-color);
+  border-color: var(--input-border-color);
+}
+
+.login-forget-password {
+  color: var(--login-forget-password);
+}
+
+.dont-have-account {
+  color: var(--login-dont-have-account);
+}
+
+.button-background {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+.link-text-color {
+  color: var(--link-color);
+}
+
+.logo-link-color {
+  color: var(--logo-link-color);
+}
+
+/* Custom style for Account Header */
+.account-header {
+  background-color: var(--login-header-background);
+  box-shadow: var(--login-header-shadow);
+  border-bottom: var(--login-header-border);
+}
+
+.container-bg-color {
+  background-color: var(--container-background-color);
+}
+
+.custom-text-color {
+  color: var(--text-color);
+}
+
+.logo-border {
+  border: var(--logo-border);
+}
+
+/* custom account menu */
+.account-nav-link-bg {
+  background-color: var(--account-nav-links-background);
+}
+
+.account-nav-link {
+  background-color: var(--account-nav-links-background);
+  color: var(--account-nav-links-text-color);
+}
+
+.account-nav-link-active {
+  background-color: var(--account-nav-links-background-active);
+  color: var(--account-nav-links-text-color-active);
+  border-color: var(--account-nav-links-border-color-active);
+}
+
+.account-nav-link-text-active {
+  color: var(--account-nav-links-text-color-active);
+}
+
+.account-header-dropdown {
+  background-color: var(--account-header-dropdown-bg);
+  border: var(--account-header-dropdown-border);
+}
+
+.account-header-link-color {
+  color: var(--account-link-text-color);
+}
+
+.account-header-link-color:hover {
+  color: var(--account-link-text-hover-color);
+}
+
+/* Mark attendance */
+.container-border {
+  border-color: var(--container-border);
+}
+
+.pagination-bg-text {
+  background-color: var(--pagination-button-bg);
+  color:  var(--pagination-button-text-color);
+}

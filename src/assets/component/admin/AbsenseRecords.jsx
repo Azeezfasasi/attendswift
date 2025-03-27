@@ -39,9 +39,9 @@ const AbsenceRecords = () => {
 
     return (
         <>
-        <div className="bg-white p-4 rounded-lg shadow-md w-full">
+        <div className="container-bg-color bg-white p-4 rounded-lg shadow-md w-full">
             {/* Title */}
-            <h2 className="text-lg font-semibold text-[#012970] mb-3">Absence Applications</h2>
+            <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">Absence Applications</h2>
 
             {/* Table */}
             <div className="overflow-x-auto">
@@ -62,13 +62,13 @@ const AbsenceRecords = () => {
                     <tbody className="text-gray-700 text-sm">
                         {currentRecords.map((app, index) => (
                             <tr key={app._id} className="border-t">
-                                <td className="p-3">{indexOfFirstRecord + index + 1}</td>
-                                <td className="p-3">{app.studentName}</td>
-                                <td className="p-3">{app.studentGrade}</td>
-                                <td className="p-3">{app.studentSection}</td>
-                                <td className="p-3">{app.date}</td>
-                                <td className="p-3">{app.days} day(s)</td>
-                                <td className="p-3">{app.reason}</td>
+                                <td className="login-label-text p-3">{indexOfFirstRecord + index + 1}</td>
+                                <td className="login-label-text p-3">{app.studentName}</td>
+                                <td className="login-label-text p-3">{app.studentGrade}</td>
+                                <td className="login-label-text p-3">{app.studentSection}</td>
+                                <td className="login-label-text p-3">{app.date}</td>
+                                <td className="login-label-text p-3">{app.days} day(s)</td>
+                                <td className="login-label-text p-3">{app.reason}</td>
                                 <td
                                     className={`p-3 font-semibold ${
                                         app.status === "approved"
@@ -117,7 +117,7 @@ const AbsenceRecords = () => {
                 <button 
                     onClick={prevPage} 
                     disabled={currentPage === 1} 
-                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                    className="pagination-bg-text px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
                 >
                     Back
                 </button>
@@ -127,16 +127,16 @@ const AbsenceRecords = () => {
                 <button 
                     onClick={nextPage} 
                     disabled={currentPage === totalPages} 
-                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                    className="pagination-bg-text px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
                 >
                     Next
                 </button>
             </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md flex flex-col self-center w-[90%] lg:w-[70%] mx-auto mt-3">
+        <div className="container-bg-color container-border border bg-white p-4 rounded-lg shadow-md flex flex-col self-center w-[90%] lg:w-[70%] mx-auto mt-3">
             {/* Status Tables */}
-            <h2 className="text-lg font-semibold text-[#012970] mb-3">Application Status</h2>
+            <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">Application Status</h2>
 
             <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
@@ -148,16 +148,16 @@ const AbsenceRecords = () => {
                     </thead>
                     <tbody className="text-gray-700 text-sm">
                         <tr className="border-t">
-                            <td className="p-3 text-gray-500">Pending</td>
-                            <td className="p-3">{pendingApplications.length}</td>
+                            <td className="login-label-text p-3 text-gray-500">Pending</td>
+                            <td className="login-label-text p-3">{pendingApplications.length}</td>
                         </tr>
                         <tr className="border-t">
                             <td className="p-3 text-green-500">Approved</td>
-                            <td className="p-3">{approvedApplications.length}</td>
+                            <td className="login-label-text p-3">{approvedApplications.length}</td>
                         </tr>
                         <tr className="border-t">
                             <td className="p-3 text-red-500">Declined</td>
-                            <td className="p-3">{declinedApplications.length}</td>
+                            <td className="login-label-text p-3">{declinedApplications.length}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -66,7 +66,7 @@ const ProfileEdit = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div className="container-bg-color container-border border max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
 
       {message && <p className="text-blue-800">{message}</p>}
@@ -105,7 +105,7 @@ const ProfileEdit = () => {
             name="role"
             value={formData.role}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-bg-border w-full border rounded p-2"
           >
             <option value="teacher">Teacher</option>
             <option value="admin">Admin</option>

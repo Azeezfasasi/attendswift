@@ -41,19 +41,19 @@ const AdminAbsenceApplicationMain = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 bg-white shadow-md rounded-md">
+        <form onSubmit={handleSubmit} className="container-bg-color container-border border p-4 bg-white shadow-md rounded-md">
             <h2 className="text-lg font-semibold mb-4">Submit Absence Application</h2>
 
             {successMessage && <div className="text-green-600">{successMessage}</div>}
 
             {/* Class Selection */}
             <div className="mb-4">
-                <label htmlFor="class" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="class" className="login-header-text block text-sm font-medium text-gray-700">
                     Select Class
                 </label>
                 <select
                     id="class"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="input-bg-border border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     value={selectedClass}
                     onChange={(e) => setSelectedClass(e.target.value)}
                 >
@@ -68,12 +68,12 @@ const AdminAbsenceApplicationMain = () => {
 
             {/* Student Selection (Filtered) */}
             <div className="mb-4">
-                <label htmlFor="student" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="student" className="login-header-text block text-sm font-medium text-gray-700">
                     Select Student
                 </label>
                 <select
                     id="student"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="input-bg-border border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     value={selectedStudentId}
                     onChange={(e) => setSelectedStudentId(e.target.value)}
                     disabled={!selectedClass}
@@ -91,13 +91,13 @@ const AdminAbsenceApplicationMain = () => {
 
             {/* Absence Date */}
             <div className="mb-4">
-                <label htmlFor="absenceDate" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="absenceDate" className="login-header-text block text-sm font-medium text-gray-700">
                     Absence Start Date
                 </label>
                 <input
                     type="date"
                     id="absenceDate"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="input-bg-border border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     value={absenceDate}
                     onChange={(e) => setAbsenceDate(e.target.value)}
                     required
@@ -106,13 +106,13 @@ const AdminAbsenceApplicationMain = () => {
 
             {/* Number of Days */}
             <div className="mb-4">
-                <label htmlFor="numberOfDays" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="numberOfDays" className="login-header-text block text-sm font-medium text-gray-700">
                     Number of Days
                 </label>
                 <input
                     type="number"
                     id="numberOfDays"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="input-bg-border border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     value={numberOfDays}
                     onChange={(e) => setNumberOfDays(parseInt(e.target.value, 10))} // Parse to integer
                     min="1" // Set minimum value to 1
@@ -122,12 +122,12 @@ const AdminAbsenceApplicationMain = () => {
 
             {/* Reason for Absence */}
             <div className="mb-4">
-                <label htmlFor="reason" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="reason" className="login-header-text block text-sm font-medium text-gray-700">
                     Reason for Absence
                 </label>
                 <textarea
                     id="reason"
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="input-bg-border border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     rows="3"
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}

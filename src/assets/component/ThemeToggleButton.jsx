@@ -1,6 +1,6 @@
 // import { useTheme } from "../contextAPI/ThemeContext";
 
-// const ThemeToggle = () => {
+// const ThemeToggleBtn = () => {
 //   const { theme, toggleTheme } = useTheme();
 
 //   return (
@@ -13,7 +13,7 @@
 //   );
 // };
 
-// export default ThemeToggle;
+// export default ThemeToggleBtn;
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -30,18 +30,15 @@ const ThemeToggle = () => {
   if (!mounted) return null; // Prevent hydration mismatch
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-4">Dark Mode with next-themes</h1>
-
-      <p>Current Theme: {theme}</p>
-
-      <button
+    <>
+     <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="px-4 py-2 mt-4 rounded bg-blue-600 text-white"
+        className="px-2 py-1 mt-0 rounded bg-blue-600 text-white"
       >
-        Toggle Theme
+        <p className="hidden md:block">{theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}</p>
+        <p className="block md:hidden">{theme === "light" ? "🌙" : "☀️"}</p>
       </button>
-    </div>
+  </>
   );
 };
 

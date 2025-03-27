@@ -104,14 +104,14 @@ const AcademicSection = () => {
     <Helmet>
         <title>Academic Session | AttendSwift</title>
     </Helmet>
-    <div className='w-full'>
+    <div className='container-bg-color w-full'>
       <AdminHeader />
-      <div className='w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]'>
-        <div className='w-[18%]'>
+      <div className='container-bg-color w-full bg-[#F6F6FE] flex flex-col lg:flex-row items-start justify-between gap-0 lg:gap-[100px]'>
+        <div className='container-bg-color w-[18%]'>
           <AdminDashLeft />
         </div>
-        <div className='w-full lg:w-[80%] max-h-[110vh] h-[100vh] md:h-[90vh] mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto mb-[40px] lg:mb-0'>
-          <div className="flex flex-col items-center p-4 mx-auto">
+        <div className='container-bg-color w-full lg:w-[80%] max-h-[110vh] h-[100vh] md:h-[90vh] mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto mb-[40px] lg:mb-0'>
+          <div className="container-bg-color flex flex-col items-center p-4 mx-auto">
             <h2 className="text-[26px] font-bold">Academic Session Manager</h2>
 
             {/* Display existing sessions */}
@@ -122,7 +122,7 @@ const AcademicSection = () => {
               ) : (
                 sessions.map((session) => (
                   <div key={session._id} className="mb-3 p-2">
-                    <p className="font-semibold text-gray-600">
+                    <p className="login-label-text font-semibold text-gray-600">
                       {session.academicSession} ({session.terms}) - {" "}
                       {session.isCurrent ? "✅ Current" : "❌ Not Current"}
                     </p>
@@ -139,9 +139,9 @@ const AcademicSection = () => {
 
             {/* Form to add a new session */}
             <form onSubmit={handleAddSession} className="flex flex-col w-full lg:w-[50%] pt-2 pr-2 pl-2 pb-4 border border-solid border-gray-400 rounded">
-              <h2 className="text-[20px] text-blue-800 font-bold">Create Academic Session</h2>
+              <h2 className="logo-link-color text-[20px] text-blue-800 font-bold">Create Academic Session</h2>
               <div className="flex flex-col gap-1 mb-2">
-                <label className="font-semibold">Academic Session</label>
+                <label className="login-label-text font-semibold">Academic Session</label>
                 <input
                 type="text"
                 name="academicSession"
@@ -149,39 +149,39 @@ const AcademicSection = () => {
                 value={newSession.academicSession}
                 onChange={handleChange}
                 required
-                className="border border-solid border-gray-400 p-2 rounded"
+                className="input-bg-border border border-solid border-gray-400 p-2 rounded"
                 />
               </div>
 
               <div className="flex flex-col md:flex-row md:justify-between gap-1 mb-2">
                 <div className="flex flex-col gap-1 lg:w-[46%]">
-                  <label className="font-semibold">Start Date</label>
+                  <label className="login-label-text font-semibold">Start Date</label>
                   <input
                   type="date"
                   name="startDate"
                   value={newSession.startDate}
                   onChange={handleChange}
                   required
-                  className="border border-solid border-gray-400 p-2 rounded"
+                  className="input-bg-border border border-solid border-gray-400 p-2 rounded"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1 lg:w-[46%]">
-                  <label className="font-semibold">End Date</label>
+                  <label className="login-label-text font-semibold">End Date</label>
                   <input
                   type="date"
                   name="endDate"
                   value={newSession.endDate}
                   onChange={handleChange}
                   required
-                  className="border border-solid border-gray-400 p-2 rounded"
+                  className="input-bg-border border border-solid border-gray-400 p-2 rounded"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-1 mb-2">
-                <label className="font-semibold">Terms</label>
-                <select name="terms" value={newSession.terms} onChange={handleChange} required className="border border-solid border-gray-400 p-2 rounded">
+                <label className="login-label-text font-semibold">Terms</label>
+                <select name="terms" value={newSession.terms} onChange={handleChange} required className="input-bg-border border border-solid border-gray-400 p-2 rounded">
                   <option value="">Choose term</option>
                   <option value="Term 1">Term 1</option>
                   <option value="Term 2">Term 2</option>
@@ -190,13 +190,13 @@ const AcademicSection = () => {
               </div>
 
               <div className="flex flex-row items-center justify-start gap-1 mb-2">
-                <label className="font-semibold">Current Session?</label>
+                <label className="login-label-text font-semibold">Current Session?</label>
                 <input
                   type="checkbox"
                   name="isCurrent"
                   checked={newSession.isCurrent}
                   onChange={handleChange}
-                  className="w-4 h-4 rounded"
+                  className="input-bg-border w-4 h-4 rounded"
                 />
               </div>
               

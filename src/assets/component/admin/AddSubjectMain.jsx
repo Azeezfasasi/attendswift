@@ -40,18 +40,18 @@ function AddSubjectMain() {
   
 
   return (
-    <div className="w-[95%] lg:w-[70%] bg-[#ffffff] rounded-[5px] flex flex-col gap-2.5 items-start justify-start relative mx-auto lg:mx-0" style={{ boxShadow: "0px 0px 30px 0px rgba(1, 41, 112, 0.1)" }}>
+    <div className="container-bg-color container-border border w-[95%] lg:w-[70%] bg-[#ffffff] rounded-[5px] flex flex-col gap-2.5 items-start justify-start relative mx-auto lg:mx-0" style={{ boxShadow: "0px 0px 30px 0px rgba(1, 41, 112, 0.1)" }}>
       <div className="w-full lg:w-[100%] pt-5 pr-3 pb-5 pl-3 flex flex-col gap-2 items-start justify-start">
 
         {/* Title */}
-        <div className="text-[#012970] text-left text-lg font-medium">Add a Subject</div>
+        <div className="logo-link-color text-[#012970] text-left text-lg font-medium">Add a Subject</div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="w-[100%] flex flex-col gap-4">
 
           {/* Subject Name */}
           <div>
-            <label className="text-[#444444]">Subject Name</label>
+            <label className="login-label-text text-[#444444]">Subject Name</label>
             <input
               type="text"
               name="name"
@@ -59,19 +59,19 @@ function AddSubjectMain() {
               onChange={handleChange}
               placeholder="Full Name"
               required
-              className="w-full border rounded-md p-2"
+              className="input-bg-border w-full border rounded-md p-2"
             />
           </div>
 
           {/* Grade */}
           <div>
-            <label className="text-[#444444]">Grade</label>
+            <label className="login-label-text text-[#444444]">Grade</label>
             <select
               name="grade"
               value={formData.grade}
               onChange={handleChange}
               required
-              className="w-full border rounded-md p-2"
+              className="input-bg-border w-full border rounded-md p-2"
             >
               <option value="">Select Grade</option>
               <option value="JSS 1">JSS 1</option>
@@ -85,13 +85,13 @@ function AddSubjectMain() {
 
           {/* Section */}
           <div>
-            <label className="text-[#444444]">Section</label>
+            <label className="login-label-text text-[#444444]">Section</label>
             <select
               name="section"
               value={formData.section}
               onChange={handleChange}
               required
-              className="w-full border rounded-md p-2"
+              className="input-bg-border w-full border rounded-md p-2"
             >
               <option value="">Select Section</option>
               <option value="A">A</option>
@@ -101,13 +101,13 @@ function AddSubjectMain() {
 
           {/* Description */}
           <div>
-            <label className="text-[#444444]">Description</label>
+            <label className="login-label-text text-[#444444]">Description</label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder="Enter description (Optional)"
-              className="w-full border rounded-md p-2"
+              className="input-bg-border w-full border rounded-md p-2"
             ></textarea>
           </div>
 
