@@ -3,6 +3,7 @@ import { useProfile } from "../../contextAPI/ProfileContext";
 import axios from "axios";
 import { Pencil, Trash, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const API_BASE_URL = "https://attendswift-backend.onrender.com/api";
 
@@ -14,6 +15,8 @@ const CurrentUsers = () => {
   const [editData, setEditData] = useState({});
   const [currentPage, setCurrentPage] = useState(1); // 🔹 Page state
   const usersPerPage = 10; // 🔹 Limit per page
+
+  const {t} =useTranslation();
 
   // Fetch all users (only if admin)
   useEffect(() => {
@@ -90,7 +93,7 @@ const CurrentUsers = () => {
 
   return (
     <div className="container-bg-color container-border-color border bg-white p-5 rounded-lg shadow-md w-full">
-      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">All Users</h2>
+      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">{t("All Users")}</h2>
 
       {/* Search Bar */}
       <input
@@ -105,16 +108,16 @@ const CurrentUsers = () => {
       <div className="container-bg-color overflow-x-auto">
         <div className="flex flex-row justify-end items-center mb-3">
             <Link to="/app/admin/addteacher" className="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition">
-              Add Users
+              {t("Add Users")}
             </Link>
           </div>
         <table className="container-border border w-full border-collapse rounded">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
-              <th className="p-3">Name</th>
-              <th className="p-3">Role</th>
-              <th className="p-3">Email</th>
-              {hasPrivilege("admin") && <th className="p-3">Actions</th>}
+              <th className="p-3">{t("Name")}</th>
+              <th className="p-3">{t("Role")}</th>
+              <th className="p-3">{t("Email")}</th>
+              {hasPrivilege("admin") && <th className="p-3">{t("Actions")}</th>}
             </tr>
           </thead>
           <tbody className="text-gray-700 text-sm">
@@ -191,12 +194,12 @@ const CurrentUsers = () => {
           disabled={currentPage === 1}
           className={`px-4 py-2 rounded ${currentPage === 1 ? "bg-gray-300 cursor-not-allowed" : "bg-blue-500 text-white"}`}
         >
-          Previous
+          {t("Previous")}
         </button>
 
         {/* Showing "10 of 20" */}
         <span className="text-sm">
-          {startIndex + 1} - {Math.min(endIndex, filteredUsers.length)} of {filteredUsers.length}
+          {startIndex + 1} - {Math.min(endIndex, filteredUsers.length)} {t("of")} {filteredUsers.length}
         </span>
 
         <button
@@ -204,7 +207,7 @@ const CurrentUsers = () => {
           disabled={currentPage === totalPages}
           className={`px-4 py-2 rounded ${currentPage === totalPages ? "bg-gray-300 cursor-not-allowed" : "bg-blue-500 text-white"}`}
         >
-          Next
+          {t("Next")}
         </button>
       </div>
     </div>

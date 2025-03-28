@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import AdminHeader from "../../assets/component/AdminHeader";
 import AdminDashLeft from "../../assets/component/AdminDashLeft";
 import LoadingSpinner from "../../assets/component/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 const AcademicSection = () => {
   const [sessions, setSessions] = useState([]);
@@ -15,6 +16,7 @@ const AcademicSection = () => {
     isCurrent: false,
   });
   const [loading, setLoading] = useState(true);
+  const {t} =useTranslation();
 
   useEffect(() => {
     fetchSessions();
@@ -112,13 +114,13 @@ const AcademicSection = () => {
         </div>
         <div className='container-bg-color w-full lg:w-[80%] max-h-[110vh] h-[100vh] md:h-[90vh] mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto mb-[40px] lg:mb-0'>
           <div className="container-bg-color flex flex-col items-center p-4 mx-auto">
-            <h2 className="text-[26px] font-bold">Academic Session Manager</h2>
+            <h2 className="text-[26px] font-bold">{t("Academic Session Manager")}</h2>
 
             {/* Display existing sessions */}
             <div className="w-full lg:w-[50%] mt-4 border border-solid border-gray-400 rounded p-2 mb-[30px]">
-              <h3 className="font-bold">Existing Sessions:</h3>
+              <h3 className="font-bold">{t("Existing Sessions")}:</h3>
               {sessions.length === 0 ? (
-                <p>No sessions available</p>
+                <p>{t("No sessions available")}</p>
               ) : (
                 sessions.map((session) => (
                   <div key={session._id} className="mb-3 p-2">
@@ -126,10 +128,10 @@ const AcademicSection = () => {
                       {session.academicSession} ({session.terms}) - {" "}
                       {session.isCurrent ? "✅ Current" : "❌ Not Current"}
                     </p>
-                    <button onClick={() => handleDeleteSession(session._id)} className="py-0 px-2 bg-blue-700 text-white lg:w-[30%] rounded cursor-pointer mt-2 mb-2">Delete</button>
+                    <button onClick={() => handleDeleteSession(session._id)} className="py-0 px-2 bg-blue-700 text-white lg:w-[30%] rounded cursor-pointer mt-2 mb-2">{t("Delete")}</button>
                     {!session.isCurrent && (
                       <button onClick={() => handleSetCurrent(session._id)} className="py-0 px-2 bg-green-800 text-white lg:w-[30%] rounded cursor-pointer mt-2 mb-2 ml-4">
-                        Set as Current
+                        {t("Set as Current")}
                       </button>
                     )}
                   </div>
@@ -139,9 +141,9 @@ const AcademicSection = () => {
 
             {/* Form to add a new session */}
             <form onSubmit={handleAddSession} className="flex flex-col w-full lg:w-[50%] pt-2 pr-2 pl-2 pb-4 border border-solid border-gray-400 rounded">
-              <h2 className="logo-link-color text-[20px] text-blue-800 font-bold">Create Academic Session</h2>
+              <h2 className="logo-link-color text-[20px] text-blue-800 font-bold">{t("Create Academic Session")}</h2>
               <div className="flex flex-col gap-1 mb-2">
-                <label className="login-label-text font-semibold">Academic Session</label>
+                <label className="login-label-text font-semibold">{t("Academic Session")}</label>
                 <input
                 type="text"
                 name="academicSession"
@@ -155,7 +157,7 @@ const AcademicSection = () => {
 
               <div className="flex flex-col md:flex-row md:justify-between gap-1 mb-2">
                 <div className="flex flex-col gap-1 lg:w-[46%]">
-                  <label className="login-label-text font-semibold">Start Date</label>
+                  <label className="login-label-text font-semibold">{t("Start Date")}</label>
                   <input
                   type="date"
                   name="startDate"
@@ -167,7 +169,7 @@ const AcademicSection = () => {
                 </div>
 
                 <div className="flex flex-col gap-1 lg:w-[46%]">
-                  <label className="login-label-text font-semibold">End Date</label>
+                  <label className="login-label-text font-semibold">{t("End Date")}</label>
                   <input
                   type="date"
                   name="endDate"
@@ -180,17 +182,17 @@ const AcademicSection = () => {
               </div>
 
               <div className="flex flex-col gap-1 mb-2">
-                <label className="login-label-text font-semibold">Terms</label>
+                <label className="login-label-text font-semibold">{t("Terms")}</label>
                 <select name="terms" value={newSession.terms} onChange={handleChange} required className="input-bg-border border border-solid border-gray-400 p-2 rounded">
-                  <option value="">Choose term</option>
-                  <option value="Term 1">Term 1</option>
-                  <option value="Term 2">Term 2</option>
-                  <option value="Term 3">Term 3</option>
+                  <option value="">{t("Choose term")}</option>
+                  <option value="Term 1">{("Term 1")}</option>
+                  <option value="Term 2">{t("Term 2")}</option>
+                  <option value="Term 3">{t("Term 3")}</option>
                 </select>
               </div>
 
               <div className="flex flex-row items-center justify-start gap-1 mb-2">
-                <label className="login-label-text font-semibold">Current Session?</label>
+                <label className="login-label-text font-semibold">{t("Current Session")}?</label>
                 <input
                   type="checkbox"
                   name="isCurrent"
@@ -200,7 +202,7 @@ const AcademicSection = () => {
                 />
               </div>
               
-              <button type="submit" className="py-2 px-2 bg-blue-700 text-white lg:w-[30%] mx-auto rounded">Add Session</button>
+              <button type="submit" className="py-2 px-2 bg-blue-700 text-white lg:w-[30%] mx-auto rounded">{t("Add Session")}</button>
             </form>
 
           </div>

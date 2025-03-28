@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSubjects } from "../../contextAPI/SubjectContext";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const CurrentSubjects = () => {
   const { subjects, fetchSubjects, editSubject, deleteSubject } = useSubjects();
+  const {t} =useTranslation();
 
   const [section, setSection] = useState("");
   const [grade, setGrade] = useState("");
@@ -51,13 +53,13 @@ const CurrentSubjects = () => {
       {/* Filters Section */}
       <div className="container-bg-color bg-white p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 mb-6">
         <div className="flex flex-col">
-          <label className="login-label-text text-sm font-medium text-gray-700">Grade</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">{t("Grade")}</label>
           <select
             className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={grade}
             onChange={(e) => setGrade(e.target.value)}
           >
-            <option value="">Select a Grade</option>
+            <option value="">{t("Select a Grade")}</option>
             <option>JSS 1</option>
             <option>JSS 2</option>
             <option>JSS 3</option>
@@ -68,13 +70,13 @@ const CurrentSubjects = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="login-label-text text-sm font-medium text-gray-700">Section</label>
+          <label className="login-label-text text-sm font-medium text-gray-700">{t("Section")}</label>
           <select
             className="input-bg-border border border-gray-300 rounded-md px-3 py-2 text-sm"
             value={section}
             onChange={(e) => setSection(e.target.value)}
           >
-            <option value="">Select a Section</option>
+            <option value="">{t("Select a Section")}</option>
             <option>A</option>
             <option>B</option>
           </select>
@@ -84,7 +86,7 @@ const CurrentSubjects = () => {
           onClick={generateReport}
           className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition mt-[20px]"
         >
-          Generate Sheet
+          {t("Generate Sheet")}
         </button>
       </div>
 
@@ -95,20 +97,20 @@ const CurrentSubjects = () => {
             to="/app/admin/addsubject"
             className="bg-[#0d6efd] text-[15px] rounded-lg px-4 py-2 text-white text-xs"
           >
-            Add Subject
+            {t("Add Subject")}
           </Link>
       </div>
-      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">Subject Report</h2>
+      <h2 className="logo-link-color text-lg font-semibold text-[#012970] mb-3">{t("Subject Report")}</h2>
       <div className="container-bg-color container-border border bg-white rounded-lg shadow-sm overflow-x-auto">
         <table className="w-full border-collapse">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
-              <th className="p-3">S/N</th>
-              <th className="p-3">Grade</th>
-              <th className="p-3">Section</th>
-              <th className="p-3">Subject</th>
-              <th className="p-3">Description</th>
-              <th className="p-3">Action</th>
+              <th className="p-3">{t("S/N")}</th>
+              <th className="p-3">{t("Grade")}</th>
+              <th className="p-3">{t("Section")}</th>
+              <th className="p-3">{t("Subject")}</th>
+              <th className="p-3">{("Description")}</th>
+              <th className="p-3">{("Action")}</th>
             </tr>
           </thead>
           <tbody className="text-gray-700 text-sm">
@@ -137,14 +139,14 @@ const CurrentSubjects = () => {
                         onClick={() => handleEditSubmit(item._id)}
                         className="bg-green-500 text-white px-3 py-1 rounded-md"
                       >
-                        Save
+                        {t("Save")}
                       </button>
                     ) : (
                       <button
                         onClick={() => handleEdit(item)}
                         className="bg-yellow-500 text-white px-3 py-1 rounded-md"
                       >
-                        Edit
+                        {t("Edit")}
                       </button>
                     )}
 
@@ -152,7 +154,7 @@ const CurrentSubjects = () => {
                       onClick={() => handleDelete(item._id)}
                       className="bg-red-500 text-white px-3 py-1 rounded-md"
                     >
-                      Delete
+                      {t("Delete")}
                     </button>
                   </td>
                 </tr>
@@ -160,7 +162,7 @@ const CurrentSubjects = () => {
             ) : (
               <tr>
                 <td colSpan="5" className="p-3 text-center text-gray-500">
-                  No records found
+                  {t("No records found")}
                 </td>
               </tr>
             )}

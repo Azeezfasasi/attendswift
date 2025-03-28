@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Check, X } from "lucide-react";
-import { useAbsence } from "../../contextAPI/AbsenseContext"; // Import context
+import { useAbsence } from "../../contextAPI/AbsenseContext";
+import { useTranslation } from "react-i18next";
 
 const AbsenceRecords = () => {
     const { absences, updateAbsenceRequest } = useAbsence();
+    const {t} =useTranslation();
 
     // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
@@ -41,7 +43,7 @@ const AbsenceRecords = () => {
         <>
         <div className="container-bg-color bg-white p-4 rounded-lg shadow-md w-full">
             {/* Title */}
-            <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">Absence Applications</h2>
+            <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">{t("Absence Applications")}</h2>
 
             {/* Table */}
             <div className="overflow-x-auto">
@@ -49,14 +51,14 @@ const AbsenceRecords = () => {
                     <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
                         <tr>
                             <th className="p-3">#</th>
-                            <th className="p-3">Student Name</th>
-                            <th className="p-3">Grade</th>
-                            <th className="p-3">Section</th>
-                            <th className="p-3">Date</th>
-                            <th className="p-3">Absence for</th>
-                            <th className="p-3">Reason</th>
-                            <th className="p-3">Status</th>
-                            <th className="p-3">Action</th>
+                            <th className="p-3">{t("Student Name")}</th>
+                            <th className="p-3">{t("Grade")}</th>
+                            <th className="p-3">{t("Section")}</th>
+                            <th className="p-3">{t("Date")}</th>
+                            <th className="p-3">{t("Absence for")}</th>
+                            <th className="p-3">{t("Reason")}</th>
+                            <th className="p-3">{t("Status")}</th>
+                            <th className="p-3">{t("Action")}</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-700 text-sm">
@@ -67,7 +69,7 @@ const AbsenceRecords = () => {
                                 <td className="login-label-text p-3">{app.studentGrade}</td>
                                 <td className="login-label-text p-3">{app.studentSection}</td>
                                 <td className="login-label-text p-3">{app.date}</td>
-                                <td className="login-label-text p-3">{app.days} day(s)</td>
+                                <td className="login-label-text p-3">{app.days} {t("day(s)")}</td>
                                 <td className="login-label-text p-3">{app.reason}</td>
                                 <td
                                     className={`p-3 font-semibold ${
@@ -119,44 +121,44 @@ const AbsenceRecords = () => {
                     disabled={currentPage === 1} 
                     className="pagination-bg-text px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
                 >
-                    Back
+                    {t("Back")}
                 </button>
                 <span className="login-label-text text-sm font-medium text-gray-700">
-                    Page {currentPage} of {totalPages}
+                    {t("Page")} {currentPage} of {totalPages}
                 </span>
                 <button 
                     onClick={nextPage} 
                     disabled={currentPage === totalPages} 
                     className="pagination-bg-text px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
                 >
-                    Next
+                    {t("Next")}
                 </button>
             </div>
         </div>
 
         <div className="container-bg-color container-border border bg-white p-4 rounded-lg shadow-md flex flex-col self-center w-[90%] lg:w-[70%] mx-auto mt-3">
             {/* Status Tables */}
-            <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">Application Status</h2>
+            <h2 className="login-label-text text-lg font-semibold text-[#012970] mb-3">{t("Application Status")}</h2>
 
             <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                     <thead className="bg-gray-100 text-left text-[#012970] text-sm font-medium">
                         <tr>
-                            <th className="p-3">Status</th>
-                            <th className="p-3">Total</th>
+                            <th className="p-3">{t("Status")}</th>
+                            <th className="p-3">{t("Total")}</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-700 text-sm">
                         <tr className="border-t">
-                            <td className="login-label-text p-3 text-gray-500">Pending</td>
+                            <td className="login-label-text p-3 text-gray-500">{t("Pending")}</td>
                             <td className="login-label-text p-3">{pendingApplications.length}</td>
                         </tr>
                         <tr className="border-t">
-                            <td className="p-3 text-green-500">Approved</td>
+                        <td className="p-3 text-green-500">{t("Approved")}</td>
                             <td className="login-label-text p-3">{approvedApplications.length}</td>
                         </tr>
                         <tr className="border-t">
-                            <td className="p-3 text-red-500">Declined</td>
+                            <td className="p-3 text-red-500">{t("Declined")}</td>
                             <td className="login-label-text p-3">{declinedApplications.length}</td>
                         </tr>
                     </tbody>

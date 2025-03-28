@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useStudents } from "../../contextAPI/StudentContext";
+import { useTranslation } from 'react-i18next';
 
 function AddStudentMain() {
   const { addStudent } = useStudents(); // Use useStudents context
+  const {t} =useTranslation();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -38,38 +40,38 @@ function AddStudentMain() {
     >
       <div className="w-full lg:w-[100%] pt-5 pr-3 pb-5 pl-3 flex flex-col gap-2 items-start justify-start shrink-0 relative">
         <div className="logo-link-color text-[#012970] text-[24px] text-left font-['Poppins-Medium',_sans-serif] text-lg leading-[21.6px]relative flex items-center justify-start font-bold">
-          Add a Student
+          {t("Add a Student")}
         </div>
         <form className="w-[100%] lg:w-[100%] flex flex-col gap-4 items-start justify-start shrink-0 relative" onSubmit={handleSubmit}>
           {/* Full name */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Student Full Name</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Student Full Name")}</label>
             <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2" />
           </div>
 
           {/* Email */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Student Email</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Student Email")}</label>
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2" />
           </div>
 
           {/* Username */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Student Username</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Student Username")}</label>
             <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2" />
           </div>
 
           {/* Password */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Student Password</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Student Password")}</label>
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2" />
           </div>
 
           {/* Grade */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Student Class</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Student Class")}</label>
             <select name="grade" value={formData.grade} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2">
-              <option value="">Select Class</option>
+              <option value="">{t("Select Class")}</option>
               <option value="JSS 1">JSS 1</option>
               <option value="JSS 2">JSS 2</option>
               <option value="JSS 3">JSS 3</option>
@@ -80,7 +82,7 @@ function AddStudentMain() {
           </div>
 
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Age</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Age")}</label>
             <input 
             type="text"
             name="age"
@@ -94,19 +96,19 @@ function AddStudentMain() {
           
           {/* Gender */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Gender</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Gender")}</label>
             <select name="gender" value={formData.gender} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2">
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="">{t("Select Gender")}</option>
+              <option value="Male">{t("Male")}</option>
+              <option value="Female">{t("Female")}</option>
             </select>
           </div>
 
           {/* Section */}
           <div className="flex flex-col gap-1.5 w-full">
-            <label className="login-label-text text-[#444444] text-base">Student Section</label>
+            <label className="login-label-text text-[#444444] text-base">{t("Student Section")}</label>
             <select name="section" value={formData.section} onChange={handleChange} required className="input-bg-border border rounded-md w-full p-2">
-              <option value="">Select Section</option>
+              <option value="">{t("Select Section")}</option>
               <option value="A">A</option>
               <option value="B">B</option>
             </select>
@@ -115,9 +117,9 @@ function AddStudentMain() {
           {/* Buttons */}
           <div className="flex gap-4 mt-4">
             {/* Submit */}
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">{t("Submit")}</button>
             {/* Reset */}
-            <button type="button" onClick={() => setFormData({ name: "", email: "", username: "", password: "", grade: "", section: "" })} className="bg-gray-500 text-white px-4 py-2 rounded-md">Reset</button>
+            <button type="button" onClick={() => setFormData({ name: "", email: "", username: "", password: "", grade: "", section: "" })} className="bg-gray-500 text-white px-4 py-2 rounded-md">{t("Reset")}</button>
           </div>
         </form>
       </div>

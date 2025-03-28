@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useProfile } from "../../contextAPI/ProfileContext";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
 
 const ProfileEdit = () => {
   const { user, fetchUserDetails, updateProfileImage } = useProfile();
@@ -11,6 +12,7 @@ const ProfileEdit = () => {
   });
   const [profileImage, setProfileImage] = useState(null);
   const [message, setMessage] = useState("");
+  const {t} =useTranslation();
 
   // Handle input change
   const handleChange = (e) => {
@@ -67,14 +69,14 @@ const ProfileEdit = () => {
 
   return (
     <div className="container-bg-color container-border border max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
+      <h2 className="text-2xl font-bold mb-4">{t("Edit Profile")}</h2>
 
       {message && <p className="text-blue-800">{message}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
         <div>
-          <label className="block font-medium">Name:</label>
+          <label className="block font-medium">{t("Name")}:</label>
           <input
             type="text"
             name="name"
@@ -87,7 +89,7 @@ const ProfileEdit = () => {
 
         {/* Email */}
         <div>
-          <label className="block font-medium">Email:</label>
+          <label className="block font-medium">{t("Email")}:</label>
           <input
             type="email"
             name="email"
@@ -100,21 +102,21 @@ const ProfileEdit = () => {
 
         {/* Role */}
         <div>
-          <label className="block font-medium">Role:</label>
+          <label className="block font-medium">{t("Role")}:</label>
           <select
             name="role"
             value={formData.role}
             onChange={handleChange}
             className="input-bg-border w-full border rounded p-2"
           >
-            <option value="teacher">Teacher</option>
-            <option value="admin">Admin</option>
+            <option value="teacher">{t("Teacher")}</option>
+            <option value="admin">{t("Admin")}</option>
           </select>
         </div>
 
         {/* Profile Image */}
         <div>
-          <label className="block font-medium">Profile Image:</label>
+          <label className="block font-medium">{t("Profile Image")}:</label>
           <input
             type="file"
             accept="image/*"
@@ -128,7 +130,7 @@ const ProfileEdit = () => {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
         >
-          Update Profile
+          {t("Update Profile")}
         </button>
       </form>
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import AdminHeader from '../../assets/component/AdminHeader'
 import AdminDashLeft from '../../assets/component/AdminDashLeft'
-import AddTeacherMain from '../../assets/component/admin/AddTeacherMain'
+import AddTeacherMain from '../../assets/component/admin/AddTeacherMain';
 
 function AddTeacher() {
   return (

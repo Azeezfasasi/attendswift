@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useProfile } from "../../contextAPI/ProfileContext";
+import { useTranslation } from 'react-i18next';
 
 const AddTeacherMain = () => {
   const { register } = useProfile();
@@ -10,6 +11,8 @@ const AddTeacherMain = () => {
     role: "teacher",
   });
   const [message, setMessage] = useState(null);
+
+  const {t} =useTranslation();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,7 +34,7 @@ const AddTeacherMain = () => {
 
   return (
     <div className="container-bg-color container-border border max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
-      <h2 className="login-label-text text-2xl font-semibold text-gray-800 mb-4">Add New User</h2>
+      <h2 className="login-label-text text-2xl font-semibold text-gray-800 mb-4">{t("Add New User")}</h2>
 
       {message && (
         <div className={`p-3 mb-4 rounded-md text-sm ${message.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
@@ -41,7 +44,7 @@ const AddTeacherMain = () => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="login-label-text block text-gray-700 font-medium">Name</label>
+          <label className="login-label-text block text-gray-700 font-medium">{t("Name")}</label>
           <input
             type="text"
             name="name"
@@ -53,7 +56,7 @@ const AddTeacherMain = () => {
         </div>
 
         <div>
-          <label className="login-label-text block text-gray-700 font-medium">Email</label>
+          <label className="login-label-text block text-gray-700 font-medium">{t("Email")}</label>
           <input
             type="email"
             name="email"
@@ -65,7 +68,7 @@ const AddTeacherMain = () => {
         </div>
 
         <div>
-          <label className="login-label-text block text-gray-700 font-medium">Password</label>
+          <label className="login-label-text block text-gray-700 font-medium">{t("Password")}</label>
           <input
             type="password"
             name="password"
@@ -77,17 +80,17 @@ const AddTeacherMain = () => {
         </div>
 
         <div>
-          <label className="login-label-text block text-gray-700 font-medium">Role</label>
+          <label className="login-label-text block text-gray-700 font-medium">{t("Role")}</label>
           <select
             name="role"
             value={formData.role}
             onChange={handleChange}
             className="input-bg-border w-full mt-1 p-2 border rounded-lg focus:ring focus:ring-blue-300"
           >
-            <option value="">Select Role</option>
-            <option value="teacher">Teacher</option>
-            <option value="parent">Parent</option>
-            <option value="admin">Admin</option>
+            <option value="">{t("Select Role")}</option>
+            <option value="teacher">{t("Teacher")}</option>
+            <option value="parent">{t("Parent")}</option>
+            <option value="admin">{t("Admin")}</option>
           </select>
         </div>
 
@@ -95,7 +98,7 @@ const AddTeacherMain = () => {
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
         >
-          Add User
+          {t("Add User")}
         </button>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 function AddSubjectMain() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function AddSubjectMain() {
     section: '',
     description: ''
   });
+
+  const {t} =useTranslation();
 
   const handleChange = (e) => {
     setFormData({
@@ -44,14 +47,14 @@ function AddSubjectMain() {
       <div className="w-full lg:w-[100%] pt-5 pr-3 pb-5 pl-3 flex flex-col gap-2 items-start justify-start">
 
         {/* Title */}
-        <div className="logo-link-color text-[#012970] text-left text-lg font-medium">Add a Subject</div>
+        <div className="logo-link-color text-[#012970] text-left text-lg font-medium">{t("Add a Subject")}</div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="w-[100%] flex flex-col gap-4">
 
           {/* Subject Name */}
           <div>
-            <label className="login-label-text text-[#444444]">Subject Name</label>
+            <label className="login-label-text text-[#444444]">{t("Subject Name")}</label>
             <input
               type="text"
               name="name"
@@ -65,7 +68,7 @@ function AddSubjectMain() {
 
           {/* Grade */}
           <div>
-            <label className="login-label-text text-[#444444]">Grade</label>
+            <label className="login-label-text text-[#444444]">{t("Grade")}</label>
             <select
               name="grade"
               value={formData.grade}
@@ -73,7 +76,7 @@ function AddSubjectMain() {
               required
               className="input-bg-border w-full border rounded-md p-2"
             >
-              <option value="">Select Grade</option>
+              <option value="">{t("Select Grade")}</option>
               <option value="JSS 1">JSS 1</option>
               <option value="JSS 2">JSS 2</option>
               <option value="JSS 3">JSS 3</option>
@@ -85,7 +88,7 @@ function AddSubjectMain() {
 
           {/* Section */}
           <div>
-            <label className="login-label-text text-[#444444]">Section</label>
+            <label className="login-label-text text-[#444444]">{t("Section")}</label>
             <select
               name="section"
               value={formData.section}
@@ -93,7 +96,7 @@ function AddSubjectMain() {
               required
               className="input-bg-border w-full border rounded-md p-2"
             >
-              <option value="">Select Section</option>
+              <option value="">{t("Select Section")}</option>
               <option value="A">A</option>
               <option value="B">B</option>
             </select>
@@ -101,7 +104,7 @@ function AddSubjectMain() {
 
           {/* Description */}
           <div>
-            <label className="login-label-text text-[#444444]">Description</label>
+            <label className="login-label-text text-[#444444]">{t("Description")}</label>
             <textarea
               name="description"
               value={formData.description}
@@ -113,7 +116,7 @@ function AddSubjectMain() {
 
           {/* Buttons */}
           <div className="flex gap-4">
-            <button type="submit" className="bg-[#0d6efd] text-white rounded-md p-2">Submit</button>
+            <button type="submit" className="bg-[#0d6efd] text-white rounded-md p-2">{t("Submit")}</button>
             <button type="button" onClick={() => setFormData({ name: '', grade: '', section: '', description: '' })} className="bg-[#6c757d] text-white rounded-md p-2">Reset</button>
           </div>
         </form>

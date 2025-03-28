@@ -12,12 +12,14 @@ import teacher from '../images/svg/teacher.svg';
 import subject from '../images/svg/subject.svg';
 import { useProfile } from '../contextAPI/ProfileContext';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function AdminDashLeft() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { logout } = useProfile();
     const navigate = useNavigate();
     const { user } = useProfile();
+    const {t} =useTranslation();
     
     if (!user) return null; // If no user is logged in, don't show the menu
     
@@ -55,15 +57,15 @@ function AdminDashLeft() {
                         src={dashicon}
                     />
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Dashboard
+                        {t("Dashboard")}
                     </div>
                 </NavLink>
                 <div className="text-[#899bbd] text-left font-['OpenSans-SemiBold',_sans-serif] text-[11px] leading-[16.5px] font-semibold uppercase relative flex items-center justify-start">
-                ANalyze
+                {t("Analyze")}
                 </div>
                 <NavLink to="/app/admin/MarkAttendance" className={({ isActive }) => `rounded p-3 flex items-center ${isActive ? ' account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold' : 'account-nav-link text-[#012970]'}`}>
                     <img className="w-6 h-6 mr-3" src={attendacerecord} alt="Attendance" />
-                    <span className="account-nav-link-text-active text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold flex items-center justify-start">Mark Attendance</span>
+                    <span className="account-nav-link-text-active text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold flex items-center justify-start">{t("Mark Attendance")}</span>
                 </NavLink>
                 <NavLink to="/app/admin/attendance" className={({ isActive }) =>
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
@@ -73,7 +75,7 @@ function AdminDashLeft() {
                         src={attendance}
                     />
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Attendance
+                        {t("Attendance")}
                     </div>
                 </NavLink>
                 <NavLink to="/app/admin/AbsenseApplication" className={({ isActive }) =>
@@ -84,7 +86,7 @@ function AdminDashLeft() {
                         src={absense}
                     />
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Absense Application
+                        {t("Absense Application")}
                     </div>
                 </NavLink>
                 <NavLink to="/app/admin/absense" className={({ isActive }) =>
@@ -95,14 +97,14 @@ function AdminDashLeft() {
                         src={absense}
                     />
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Absense Records
+                        {t("Absense Records")}
                     </div>
                 </NavLink>
                 <NavLink to="/app/admin/report" className={({ isActive }) =>
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Report
+                        {t("Report")}
                     </div>
                     <img
                         className="w-[26px] h-[26px] absolute left-2 top-2 overflow-visible"
@@ -110,13 +112,13 @@ function AdminDashLeft() {
                     />
                 </NavLink>
                 <div className="text-[#dbdede] text-left font-['OpenSans-SemiBold',_sans-serif] text-[11px] leading-[16.5px] font-semibold uppercase relative flex items-center justify-start">
-                Manage
+                {t("Manage")}
                 </div>
                 <NavLink to="/app/admin/teacher" className={({ isActive }) =>
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Teacher
+                        {t("Teacher")}
                     </div>
                     <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
                         <img
@@ -129,7 +131,7 @@ function AdminDashLeft() {
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Student
+                        {t("Student")}
                     </div>
                     <img
                         className="w-[26px] h-[26px] absolute left-2 top-[9px] overflow-visible"
@@ -140,7 +142,7 @@ function AdminDashLeft() {
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Subject
+                        {t("Subject")}
                     </div>
                     <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
                         <img
@@ -153,7 +155,7 @@ function AdminDashLeft() {
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Grade Promotion
+                        {t("Grade Promotion")}
                     </div>
                     <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
                         <img
@@ -166,7 +168,7 @@ function AdminDashLeft() {
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Profile
+                        {t("Profile")}
                     </div>
                     <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
                         <img
@@ -179,7 +181,7 @@ function AdminDashLeft() {
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Settings
+                        {t("Settings")}
                     </div>
                     <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
                         <img
@@ -192,7 +194,7 @@ function AdminDashLeft() {
                 `rounded w-[260px] h-11 flex relative items-center px-3 ${
                     isActive ? "account-nav-link-active border bg-[#dbdede] text-[#4154f1] font-bold" : "account-nav-link bg-[#ffffff] text-[#012970]"}`}>
                     <div className="account-nav-link-text-active text-[#012970] text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold absolute left-[41px] top-[10.75px] flex items-center justify-start">
-                        Academic Section
+                        {t("Academic Section")}
                     </div>
                     <div className="w-6 h-6 absolute left-2.5 top-2.5 overflow-hidden">
                         <img
@@ -203,11 +205,11 @@ function AdminDashLeft() {
                 </NavLink>
 
                 <div className="text-[#899bbd] text-left font-['OpenSans-SemiBold',_sans-serif] text-[11px] leading-[16.5px] font-semibold uppercase relative flex items-center justify-start">
-                Logout
+                {t("Logout")}
                 </div>
                 <div onClick={handleLogout} className="rounded w-[260px] h-[43px] p-3 flex items-center text-[#012970] hover:bg-red-100 hover:text-red-600 cursor-pointer">
                     <img className="w-5 h-5 mr-3" src={logouticon} alt="Logout" />
-                    <span className="text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold flex items-center justify-start">Logout</span>
+                    <span className="text-left font-['OpenSans-SemiBold',_sans-serif] text-[15px] leading-[22.5px] font-semibold flex items-center justify-start">{t("Logout")}</span>
                 </div>
             </div>
             )}

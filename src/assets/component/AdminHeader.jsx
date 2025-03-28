@@ -7,18 +7,27 @@ import { useNavigate } from "react-router-dom";
 import LoadingSpinner from './LoadingSpinner';
 import ThemeToggle from './ThemeToggle';
 import ThemeToggleBtn from './ThemeToggleButton';
+import { useTranslation } from 'react-i18next';
 
 function AdminHeader() {
     const [isOpen, setIsOpen] = useState(false);
     const { logout } = useProfile();
     const navigate = useNavigate();
     const { user, loading, fetchUserDetails } = useProfile();
+    const {t} =useTranslation();
 
     // Logout function
     const handleLogout = async () => {
         await logout();
         navigate("/"); // Redirect to login page after logout
     };
+
+    // Change Language
+    const changeLanguage = (lng) => {
+        console.log("Changing language to:", lng);
+        localStorage.setItem('i18nextLng', lng);
+        window.location.reload(); // Force page reload
+      };
     
     // Fetching user details
     useEffect(() => {
@@ -32,7 +41,7 @@ function AdminHeader() {
       }
     
       if (!user) {
-        return <p>No user found. Please log in.</p>;
+        return <p>{t("No user found. Please log in.")}</p>;
       }
     
 
@@ -51,7 +60,7 @@ function AdminHeader() {
             {/* User Role Display */}
             <div className="hidden lg:block shrink-0 lg:w-[30%] h-[37px] relative">
                 <div className="custom-text-color text-[#012970] text-center text-base leading-4 font-normal mt-[10px]">
-                    {user.role} Role
+                    {user.role} {t("Role")}
                 </div>
             </div>
 
@@ -86,13 +95,32 @@ function AdminHeader() {
                 {isOpen && (
                     <div className="account-header-dropdown absolute top-[40px] right-[-20px] mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                         <Link to="/app/admin/settings" className="account-header-link-color block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            Profile
+                            {t("Profile")}
                         </Link>
                         <Link to="/app/admin/settings" className="account-header-link-color block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            Settings
+                            {t("Settings")}
                         </Link>
                         <div onClick={handleLogout} className="account-header-link-color block px-4 py-2 text-red-600 hover:bg-gray-100 cursor-pointer">
-                            Logout
+                            {t("Logout")}
+                        </div>
+
+                        {/* Language section */}
+                        <div className='flex flex-row justify-center border-t border-solid border-gray-300'>
+                            <button onClick={() => changeLanguage('en')} className='text-amber-600 mr-2 cursor-pointer border-r border-solid border-gray-300 pr-2 font-semibold'>
+                                {t("En")}
+                            </button>
+                            <button onClick={() => changeLanguage('fr')} className='text-blue-500 cursor-pointer mr-2 border-r border-solid border-gray-300 pr-2 font-semibold'>
+                                {t("Fr")}
+                            </button>
+                            <button onClick={() => changeLanguage('ha')} className='text-cyan-500 cursor-pointer mr-2 border-r border-solid border-gray-300 pr-2 font-semibold'>
+                                {t("Ha")}
+                            </button>
+                            <button onClick={() => changeLanguage('yo')} className='text-emerald-500 cursor-pointer mr-2 border-r border-solid border-gray-300 pr-2 font-semibold'>
+                                {t("Yo")}
+                            </button>
+                            <button onClick={() => changeLanguage('ig')} className='text-fuchsia-500 cursor-pointer mr-2 font-semibold'>
+                                {t("Ig")}
+                            </button>
                         </div>
                     </div>
                 )}

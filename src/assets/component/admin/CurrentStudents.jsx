@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Pencil, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 import { fetchStudents, editStudent, deleteStudent } from "../../../services/api";
+import { useTranslation } from 'react-i18next';
 
 const CurrentStudents = () => {
   const [students, setStudents] = useState([]);
@@ -9,6 +10,8 @@ const CurrentStudents = () => {
   const [editingStudent, setEditingStudent] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const studentsPerPage = 10;
+
+  const {t} =useTranslation();
 
   useEffect(() => {
     loadStudents();
@@ -69,12 +72,12 @@ const CurrentStudents = () => {
     <div className="container-bg-color bg-white p-5 rounded-lg shadow-md w-full">
       <div className="w-full flex flex-row justify-end mb-5">
         <Link to="/app/admin/AddStudent" className="bg-[#0d6efd] rounded-lg px-4 py-2 text-white text-xs">
-          Add Students
+          {t("Add Students")}
         </Link>
       </div>
       
       <div className="flex justify-between items-center mb-3">
-        <h2 className="logo-link-color text-lg font-semibold text-[#012970]">Current Students</h2>
+        <h2 className="logo-link-color text-lg font-semibold text-[#012970]">{t("Current Students")}</h2>
         <input
           type="text"
           placeholder="Search..."
@@ -88,14 +91,14 @@ const CurrentStudents = () => {
         <table className="input-bg-border border w-full border-collapse rounded">
           <thead className="bg-blue-50 text-left text-[#012970] text-sm font-medium">
             <tr>
-              <th className="p-3">Student ID</th>
-              <th className="p-3">Student Name</th>
-              <th className="p-3">Grade</th>
-              <th className="p-3">Section</th>
-              <th className="p-3">Age</th>
-              <th className="p-3">Gender</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Action</th>
+              <th className="p-3">{t("Student ID")}</th>
+              <th className="p-3">{t("Student Name")}</th>
+              <th className="p-3">{t("Grade")}</th>
+              <th className="p-3">{t("Section")}</th>
+              <th className="p-3">{t("Age")}</th>
+              <th className="p-3">{t("Gender")}</th>
+              <th className="p-3">{t("Email")}</th>
+              <th className="p-3">{t("Action")}</th>
             </tr>
           </thead>
           <tbody className="text-gray-700 text-sm">
@@ -131,15 +134,15 @@ const CurrentStudents = () => {
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          Back
+          {t("Back")}
         </button>
-        <span className="text-sm font-medium">Page {currentPage} of {totalPages}</span>
+        <span className="text-sm font-medium">{t("Page")} {currentPage} {t("of")} {totalPages}</span>
         <button 
           className={`px-4 py-2 bg-gray-300 rounded-md ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-400"}`} 
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Next
+          {t("Next")}
         </button>
       </div>
     </div>
