@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useProfile } from "../contextAPI/ProfileContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PrivateRoute = () => {
   const { user, loading } = useProfile();
 
   if (loading) {
-    return <div>Loading...</div>; // Or replace with a spinner
+    return <LoadingSpinner />; 
   }
 
   // Redirect to login if no user is authenticated

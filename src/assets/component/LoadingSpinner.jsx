@@ -3,7 +3,8 @@ import { ThreeDots } from 'react-loader-spinner';
 
 function LoadingSpinner() {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginLeft: "auto", marginRight: "auto" }}>
+        <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '100vh', marginLeft: "auto", marginRight: "auto" }}>
+            <div className='text-[24px] font-semibold'>Loading...</div>
             <ThreeDots
                 height="80"
                 width="80"

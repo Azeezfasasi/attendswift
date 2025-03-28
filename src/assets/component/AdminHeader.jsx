@@ -36,9 +36,9 @@ function AdminHeader() {
         }
       }, [user, fetchUserDetails]);
     
-      if (loading) {
-        return <LoadingSpinner />;
-      }
+    //   if (loading) {
+    //     return <LoadingSpinner />;
+    //   }
     
       if (!user) {
         return <p>{t("No user found. Please log in.")}</p>;

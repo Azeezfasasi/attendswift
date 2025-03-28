@@ -44,9 +44,9 @@ const TeacherAttendanceSheetMain = () => {
         }
     };
 
-    if (loading) {
-        return <LoadingSpinner />;
-    }
+    // if (loading) {
+    //     return <LoadingSpinner />;
+    // }
 
     return (
         <div className="container-bg-color container-border border bg-gray-100 p-6 rounded-lg shadow-md w-full">
