@@ -4,7 +4,11 @@ import { ThreeDots } from 'react-loader-spinner';
 function LoadingSpinner() {
     return (
         <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '100vh', marginLeft: "auto", marginRight: "auto" }}>
-            <div className='text-[24px] font-semibold'>Loading...</div>
+            {/* <div className='text-[24px] font-semibold'>Loading...</div> 
+            */}
+            <div className="logo-link-color text-[#012970] text-left font-['Nunito-Bold',_sans-serif] text-[18px] md:text-[26px] leading-[26px] font-bold">
+                AttendSwift
+            </div>
             <ThreeDots
                 height="80"
                 width="80"
