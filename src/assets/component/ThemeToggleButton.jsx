@@ -31,12 +31,21 @@ const ThemeToggle = () => {
 
   return (
     <>
+    {/* For large screens */}
      <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="px-2 py-1 mt-0 rounded bg-blue-600 text-white"
+        className="hidden md:block px-2 py-1 mt-0 rounded bg-blue-600 text-white cursor-pointer"
+      >
+        <p className="">{theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}</p>
+      </button>
+
+      {/* For small screen */}
+      <button
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        className="block md:hidden px-2 py-0 mt-0 rounded bg-blue-600 text-white cursor-pointer"
       >
         <p className="hidden md:block">{theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}</p>
-        <p className="block md:hidden">{theme === "light" ? "🌙" : "☀️"}</p>
+        <p className="block md:hidden">{theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}</p>
       </button>
   </>
   );

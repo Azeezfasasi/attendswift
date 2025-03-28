@@ -35,7 +35,7 @@ function AdminDashLeft() {
     className="logo-link-color lg:hidden p-4 text-[#012970] fixed top-[-7px] left-0 z-[99999]"
     onClick={() => setMenuOpen(!menuOpen)}
     >
-    {menuOpen ? <FiX size={30} className='border ml-[20px]' /> : <FiMenu size={30} />}
+        {menuOpen ? <FiX size={30} className='border ml-[0px]' /> : <FiMenu size={30} />}
     </button>
 
     {/* Sidebar */}

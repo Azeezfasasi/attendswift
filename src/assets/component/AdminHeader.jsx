@@ -66,9 +66,9 @@ function AdminHeader() {
 
             {/* Top Right Section */}
             <div className="pr-4 flex flex-row gap-[25px] md:gap-[25px] items-center justify-end flex-1 relative lg:w-[30%] ml-[-120px]">
-                {/* <div className='h-fit border border-solid border-white'> */}
-                <ThemeToggleBtn />
-                {/* </div> */}
+                <div className='hidden md:block h-fit border border-solid border-white rounded'>
+                    <ThemeToggleBtn />
+                </div>
                 <button className="pt-[5.75px] pb-[5.25px] flex flex-row gap-0 items-start justify-start shrink-0 relative cursor-pointer">
                     <i className='fa-regular fa-bell text-[24px]'></i>
                 </button>
@@ -104,8 +104,13 @@ function AdminHeader() {
                             {t("Logout")}
                         </div>
 
+                        {/* Theme toggle */}
+                        <div className='block md:hidden h-fit ml-[15px] mb-[10px]'>
+                            <ThemeToggleBtn />
+                        </div>
+
                         {/* Language section */}
-                        <div className='flex flex-row justify-center border-t border-solid border-gray-300'>
+                        <div className='flex flex-row justify-center border-t border-solid border-gray-300 mb-[3px] mt-[3px]'>
                             <button onClick={() => changeLanguage('en')} className='text-amber-600 mr-2 cursor-pointer border-r border-solid border-gray-300 pr-2 font-semibold'>
                                 {t("En")}
                             </button>
