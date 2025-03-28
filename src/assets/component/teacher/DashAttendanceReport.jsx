@@ -20,9 +20,9 @@ const data = [
 
 const DashAttendanceReport = () => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 w-[90%] mt-[20px] mb-[20px] mx-auto lg:mx-0">
+    <div className="container-bg-color stats-border-color border bg-white shadow-lg rounded-lg p-6 w-[90%] mt-[20px] mb-[20px] mx-auto lg:mx-0">
       <h2 className="text-lg font-semibold text-blue-700">
-        Attendance Report <span className="text-[#899BBD]">| This Month</span>
+        Attendance Report <span className="stats-label text-[#899BBD]">| This Month</span>
       </h2>
 
 

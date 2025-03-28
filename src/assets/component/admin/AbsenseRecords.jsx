@@ -121,7 +121,7 @@ const AbsenceRecords = () => {
                 >
                     Back
                 </button>
-                <span className="text-sm font-medium text-gray-700">
+                <span className="login-label-text text-sm font-medium text-gray-700">
                     Page {currentPage} of {totalPages}
                 </span>
                 <button 

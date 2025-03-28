@@ -36,11 +36,13 @@ import AcademicSection from "./app/admin/AcademicSection";
 import GradePromotion from "./app/admin/GradePromotion";
 import AdminProfile from "./app/admin/Profile";
 import AdminSettings from "./app/admin/Settings";
+import TranslationProvider from "./assets/component/translation/TranslationProvider";
 
 
 function App() {
   return (
     <>
+    <TranslationProvider>
     <SchoolProvider>
       <UserProvider>
         <TeacherProvider>
@@ -99,6 +101,7 @@ function App() {
         </TeacherProvider>
       </UserProvider>
     </SchoolProvider>
+    </TranslationProvider>
     </>
   )
 }

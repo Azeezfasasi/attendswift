@@ -28,10 +28,10 @@ function ForgetPasswordMain() {
     <div className="w-[96%] lg:w-[90%] h-full lg:h-[663px] flex flex-col lg:flex-row justify-start lg:justify-center items-start lg:items-center gap-10 lg:gap-0 relative overflow-hidden mt-[40px] mx-auto">
         {/* Left Side */}
         <div className="w-full lg:w-[50%] h-fit lg:h-[555px] flex flex-col items-start justify-center mx-auto overflow-hidden ml-[20px] self-center">
-            <div className="text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-[32px] md:text-[64px] leading-[50px] md:leading-[76.8px] font-normal w-[90%]">
-                Attendance <br /> <span className='text-[#012970]'>for your business</span>
+            <div className="login-left-title text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-[32px] md:text-[64px] leading-[50px] md:leading-[76.8px] font-normal w-[90%]">
+                Attendance <br /> <span className='text-[#012970] login-left-span-title'>for your business</span>
             </div>
-            <div className="text-[#757f8e] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal w-[93%] lg:w-[96%]">
+            <div className="login-left-sub-text text-[#757f8e] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal w-[93%] lg:w-[96%]">
             Efficient attendance tracking is essential for maintaining productivity and ensuring accountability in any organization. Our system provides a seamless solution for monitoring employee attendance, streamlining check-ins, and generating accurate reports.
             With real-time tracking and automated record-keeping, you can eliminate manual errors and improve workforce management. Whether for schools, businesses, or remote teams, our attendance system ensures transparency and efficiency.
 
@@ -51,10 +51,10 @@ function ForgetPasswordMain() {
             {message && <p className="login-error-message text-center text-green-600 mb-4">{message}</p>}
 
             <div className="w-full md:w-[526px] h-[71px] flex flex-col items-start justify-start self-center mx-auto relative">
-                <div className="text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-[15px] leading-6 font-normal w-[71px]">
+                <div className="login-label-text text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-[15px] leading-6 font-normal w-[71px]">
                     Email
                 </div>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" className="bg-[#ffffff] rounded border-solid border-[#ced4da] border w-full md:w-[526px] h-[38px] pl-1" required />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" className="input-bg-border bg-[#ffffff] rounded border-solid border-[#ced4da] border w-full md:w-[526px] h-[38px] pl-1" required />
             </div>
 
             {/* Submit button */}
@@ -64,7 +64,7 @@ function ForgetPasswordMain() {
                 </div>
             </button>
             <div className="flex flex-row w-[263px] h-6 static">
-                <div className="text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal">
+                <div className="login-label-text text-[#212529] text-left font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal">
                     Remember password?
                 </div>
                 <Link to="/" className="link-text-color text-[#0dcaf0] text-left font-['Roboto-Regular',_sans-serif] text-[15px] leading-6 font-normal ml-1">

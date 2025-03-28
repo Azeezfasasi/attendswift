@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAbsence } from "../../contextAPI/AbsenseContext";
+import { useTranslation } from "react-i18next";
 
 const AdminAbsenceApplicationMain = () => {
     const { submitAbsenceRequest, students } = useAbsence();
@@ -11,6 +12,7 @@ const AdminAbsenceApplicationMain = () => {
     const [numberOfDays, setNumberOfDays] = useState(1); // Default to 1 day
 
     const [filteredStudents, setFilteredStudents] = useState();
+    const {t} =useTranslation();
 
     useEffect(() => {
         // Filter students based on selected class
@@ -42,14 +44,14 @@ const AdminAbsenceApplicationMain = () => {
 
     return (
         <form onSubmit={handleSubmit} className="container-bg-color container-border border p-4 bg-white shadow-md rounded-md">
-            <h2 className="text-lg font-semibold mb-4">Submit Absence Application</h2>
+            <h2 className="text-lg font-semibold mb-4">{t("Submit Absence Application")}</h2>
 
             {successMessage && <div className="text-green-600">{successMessage}</div>}
 
             {/* Class Selection */}
             <div className="mb-4">
                 <label htmlFor="class" className="login-header-text block text-sm font-medium text-gray-700">
-                    Select Class
+                    {t("Select Class")}
                 </label>
                 <select
                     id="class"
@@ -57,7 +59,7 @@ const AdminAbsenceApplicationMain = () => {
                     value={selectedClass}
                     onChange={(e) => setSelectedClass(e.target.value)}
                 >
-                    <option value="">Select a class</option>
+                    <option value="">{t("Select a class")}</option>
                     {["JSS 1", "JSS 2", "JSS 3", "SSS 1", "SSS 2", "SSS 3"].map((grade) => (
                         <option key={grade} value={grade}>
                             {grade}
@@ -69,7 +71,7 @@ const AdminAbsenceApplicationMain = () => {
             {/* Student Selection (Filtered) */}
             <div className="mb-4">
                 <label htmlFor="student" className="login-header-text block text-sm font-medium text-gray-700">
-                    Select Student
+                {t("Select Student")}
                 </label>
                 <select
                     id="student"
@@ -78,7 +80,7 @@ const AdminAbsenceApplicationMain = () => {
                     onChange={(e) => setSelectedStudentId(e.target.value)}
                     disabled={!selectedClass}
                 >
-                    <option value="">Select a student</option>
+                    <option value="">{t("Select a student")}</option>
                     {filteredStudents &&
                         filteredStudents.length > 0 &&
                         filteredStudents.map((student) => (
@@ -92,7 +94,7 @@ const AdminAbsenceApplicationMain = () => {
             {/* Absence Date */}
             <div className="mb-4">
                 <label htmlFor="absenceDate" className="login-header-text block text-sm font-medium text-gray-700">
-                    Absence Start Date
+                    {t("Absence Start Date")}
                 </label>
                 <input
                     type="date"
@@ -107,7 +109,7 @@ const AdminAbsenceApplicationMain = () => {
             {/* Number of Days */}
             <div className="mb-4">
                 <label htmlFor="numberOfDays" className="login-header-text block text-sm font-medium text-gray-700">
-                    Number of Days
+                    {t("Number of Days")}
                 </label>
                 <input
                     type="number"
@@ -123,7 +125,7 @@ const AdminAbsenceApplicationMain = () => {
             {/* Reason for Absence */}
             <div className="mb-4">
                 <label htmlFor="reason" className="login-header-text block text-sm font-medium text-gray-700">
-                    Reason for Absence
+                    {t("Reason for Absence")}
                 </label>
                 <textarea
                     id="reason"
@@ -139,7 +141,7 @@ const AdminAbsenceApplicationMain = () => {
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-                Submit Application
+                {t("Submit Application")}
             </button>
         </form>
     );

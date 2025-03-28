@@ -20,7 +20,7 @@ function AdminDashboard() {
         <div className='container-bg-color w-[18%]'>
           <AdminDashLeft />
         </div>
-        <div className='container-bg-color  w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
+        <div className='container-bg-color w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
           <DashboardCurrentSession />
           <TeacherDashStats />
           <DashReport />

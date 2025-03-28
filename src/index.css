@@ -39,6 +39,8 @@
   --account-link-text-color: #364153;
   --container-border: #ffffff;
   --pagination-button-bg: #d1d5dc;
+  --stats-label: #899BBD;
+  --stats-border-color: #ffffff;
 }
 
 /* Dark Mode */
@@ -81,6 +83,8 @@ html.dark {
   --container-border: #ffffff;
   --pagination-button-bg: #ffffff;
   --pagination-button-text-color: #121212;
+  --stats-label: #ffffff;
+  --stats-border-color: #ffffff;
 }
 
 /* Global Styles */
@@ -174,6 +178,14 @@ html, body {
 
 .logo-border {
   border: var(--logo-border);
+}
+
+.stats-label {
+  color: var(--stats-label);
+}
+
+.stats-border-color {
+  border-color: var(--stats-border-color);
 }
 
 /* custom account menu */

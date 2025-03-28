@@ -165,7 +165,7 @@ const handleSetAllPending = async () => {
               ))
             ) : (
               <tr>
-                <td colSpan="5" className="p-3 text-center text-gray-500">
+                <td colSpan="5" className="stats-label p-3 text-center text-gray-500">
                   No Students found
                 </td>
               </tr>

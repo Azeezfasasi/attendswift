@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import AdminHeader from '../../assets/component/AdminHeader'
 import AdminDashLeft from '../../assets/component/AdminDashLeft'
 import ThemeToggle from '../../assets/component/ThemeToggle';
+import LanguageSwitch from '../../assets/component/LanguageSwitch';
 
 function AdminSettings() {
   return (
@@ -17,7 +18,8 @@ function AdminSettings() {
           <AdminDashLeft />
         </div>
         <div className='container-bg-color w-[95%] lg:w-[80%] h-screen mt-[10px] lg:mt-[40px] overflow-x-hidden overflow-y-scroll mx-auto'>
-            <ThemeToggle />     
+            <ThemeToggle />    
+            <LanguageSwitch /> 
         </div>
       </div>
     </div>

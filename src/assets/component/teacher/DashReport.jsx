@@ -22,9 +22,9 @@ const data = [
 
 const DashReport = () => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 w-[95%] mx-auto lg:mx-0">
+    <div className="container-bg-color stats-border-color border bg-white shadow-lg rounded-lg p-4 w-[95%] mx-auto lg:mx-0">
       <h2 className="text-lg font-bold text-blue-700">
-        Reports <span className="text-gray-400">/Today</span>
+        Reports <span className="stats-label text-gray-400">/ Today</span>
       </h2>
       <ResponsiveContainer width="90%" height={300}>
         <LineChart data={data}>

@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const RecentActivities = () => {
+    const { t } = useTranslation();
+  
   const activities = [
     { time: "32 min", text: "New teacher created" },
     { time: "56 min", text: "JSS 1 A attendance taken" },
@@ -9,11 +12,11 @@ const RecentActivities = () => {
   ];
 
   return (
-    <div className="box bg-white p-4 rounded-lg shadow-md w-[350px] mt-[15px] mx-auto lg:mx-0">
+    <div className="container-bg-color stats-border-color border bg-white p-4 rounded-lg shadow-md w-[350px] mt-[15px] mx-auto lg:mx-0">
       {/* Title */}
       <h2 className="text-lg font-semibold text-blue-700">
-        Recent Activities
-        <span className="text-gray-400 text-sm font-normal"> | Today</span>
+        {t('Recent Activities')}
+        <span className="stats-label text-gray-400 text-sm font-normal"> | {t('Today')}</span>
       </h2>
 
       {/* Activities List */}
@@ -21,7 +24,7 @@ const RecentActivities = () => {
         {activities.map((activity, index) => (
           <div key={index} className="flex flex-row items-start justify-start relative">
             {/* Time */}
-            <div className="text-gray-500 text-sm w-16">{activity.time}</div>
+            <div className="custom-text-color text-gray-500 text-sm w-16">{activity.time}</div>
 
             {/* Vertical Line */}
             <div className="flex flex-col items-center mt-2">
@@ -32,7 +35,7 @@ const RecentActivities = () => {
             </div>
 
             {/* Activity Text */}
-            <div className="ml-4 text-gray-700 text-sm">{activity.text}</div>
+            <div className="custom-text-color ml-4 text-gray-700 text-sm">{activity.text}</div>
           </div>
         ))}
       </div>
