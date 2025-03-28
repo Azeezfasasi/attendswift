@@ -37,7 +37,7 @@ import GradePromotion from "./app/admin/GradePromotion";
 import AdminProfile from "./app/admin/Profile";
 import AdminSettings from "./app/admin/Settings";
 import TranslationProvider from "./assets/component/translation/TranslationProvider";
-
+import ScrollToTop from "./assets/component/ScrollToTop";
 
 function App() {
   return (
@@ -52,6 +52,7 @@ function App() {
               <StudentsProvider>
                 <AttendanceProvider>
                   <Router>
+                    <ScrollToTop />
                     <Routes>
                       {/* Login Routes */}
                       <Route path="/adminlogin" element={<AdminLogin />} />
