@@ -8,7 +8,7 @@ function TeacherLogin() {
   return (
     <>
     <Helmet>
-        <title>Teacher Login | AttendSwift</title>
+        <title>Login | AttendSwift</title>
     </Helmet>
     <LoginSignUpHeader />
     <LoginMain />

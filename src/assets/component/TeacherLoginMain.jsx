@@ -18,6 +18,7 @@ function LoginMain() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         setError(""); // Clear previous errors
     
         const result = await login(email, password);
@@ -28,6 +29,7 @@ function LoginMain() {
         } else {
           setError(result.message); // Show error message on UI
         }
+        setLoading(false);
       };
 
     // Handle Login with Google
@@ -89,7 +91,7 @@ function LoginMain() {
                 </div>
             </div>
             <button type='submit' className="shrink-0 w-[74px] h-[38px] static cursor-pointer mt-[-5px]" disabled={loading}>
-                <div className="button-background bg-blue-800 text-white text-center font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal w-[74px] h-[38px] flex flex-row justify-center items-center">
+                <div className="button-background bg-blue-800 text-white text-center font-['Roboto-Regular',_sans-serif] text-base leading-6 font-normal w-[124px] h-[38px] flex flex-row justify-center items-center">
                 {loading ? 'Logging in...' : 'Login'}
                 </div>
             </button>
