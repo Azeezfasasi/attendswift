@@ -25,7 +25,7 @@ function AdminDashboard() {
           <TeacherDashStats />
           <DashReport />
           <RecentActivies />
-          <DashAttendanceReport />
+          {/* <DashAttendanceReport /> */}
         </div>
       </div>
     </div>
